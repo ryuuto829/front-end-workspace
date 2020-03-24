@@ -1,3 +1,86 @@
+/* GLOBAL STYLE */
+
 body {
     background: #32373d;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+/* SIDEBAR BLOCK STYLE */
+
+aside {
+    width: 310px;
+    background-color: white;
+    margin: 50px auto 0 auto;
+    border-radius: 5px;
+}
+
+aside h2 {
+    background-color: #328492;
+    padding: 12px;
+    margin: 0;
+    font-weight: 600;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.wrap {
+    padding: 12px;
+}
+
+p {
+    margin: 0;
+}
+
+.numbers {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding: 8px 0;
+}
+
+.numbers p {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.numbers span {
+    font-size: 18px;
+}
+
+.designers, .online, .empty-block {
+    display: table-cell;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #edeff1;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+.create p {
+    display: inline-block;
+}
+
+.create {
+    padding: 8px;
+    height: 100%;
+}
+
+/* Next time use display: flex, need to fix */
+
+.icon-wrap {
+    display: inline-block;
 }
