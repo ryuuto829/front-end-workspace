@@ -1,0 +1,86 @@
+/* GLOBAL STYLE */
+
+body {
+    background: #32373d;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+/* MAIN HEADER STYLE */
+
+header {
+    padding: 0 20px;
+    height: 47px;
+    background-color: #ffffff;
+    border-bottom: 1px solid#edeff1;
+}
+
+/* Logo style */
+
+.logo-home {
+    position: relative;
+    height: 47px;
+    width: 117px;
+    float: left;
+}
+
+.logo-icon {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    padding: 7px 8px 8px 0;
+}
+
+.logo-title {
+    display: inline-block;
+    height: 18px;
+    margin-right: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+/* Search input */
+
+nav {
+    box-sizing: border-box;
+    height: inherit;
+    width: calc(100% - 451px);
+    overflow: hidden;
+    padding: 0 6%;
+    position: relative;
+}
+
+.search-icon {
+    height: 18px;
+    width: 18px;
+    fill: #878a8c;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-left: 90px;
+    margin-top: -9px;
+}
+
+input {
+    display: inherit;
+    box-sizing: inherit;
+    height: 36px;
+    width: 100%;
+    padding: 0 16px 0 40px;
+    outline: none;
+    border-radius: 4px;
+    background-color: #f6f7f8;
+    border: 1px solid #edeff1;
+    margin-top: 5px;
+}
+
+/* Buttons and menu style */
+
+.menu {
+    height: inherit;
+    width: 334px;
+    float: right;
+}
