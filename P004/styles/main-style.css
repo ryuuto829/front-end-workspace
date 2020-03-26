@@ -1,0 +1,126 @@
+/* SET ALL ELEMENTS TO BORDER-BOX MODEL */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* GLOBAL STYLE */
+
+body {
+    background: #32373d;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 50px;
+    margin: 0;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* KEYBOARD STYLE */
+
+.board {
+    width: 890px;
+    margin: 50px auto 0 auto;
+    padding: 5px;
+    border: 1px solid grey;
+    user-select: none;
+}
+
+ul {
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background-color: #ebf2ef;
+    margin: 3px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    border-radius: 5px;
+}
+
+li[class] {
+    font-size: 14px;
+}
+
+sup {
+    position: absolute;
+    line-height: 20px;
+    top: 0;
+    left: 35px;
+}
+
+/* Long buttons */
+
+.right-long-btn {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.left-long-btn {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.btn-backspace, .btn-tab {
+    width: 80px;
+}
+
+.btn-capslock, .btn-enter {
+    width: 95px;
+}
+
+.btn-shift {
+    width: 125px;
+}
+
+/* Last line buttons */
+
+.btn-ctrl, .btn-fn, .btn-windows, .btn-alt {
+    width: 50px;
+}
+
+.fix-ctrl {
+    width: 65px;
+}
+
+.btn-space {
+    width: 290px;
+}
+
+.white-space {
+    width: 186px;
+    background-color: unset;
+}
+
+/* Editional & dynamic styling */
+
+li:hover {
+    cursor: pointer;
+    background-color: grey;
+    color: lemonchiffon;
+}
+
+li[class="white-space"]:hover {
+    cursor: unset;
+    background-color: unset;
+}
+
+.line-3 li:nth-child(5), .line-3 li:nth-child(8) {
+    text-decoration: underline;
+}
