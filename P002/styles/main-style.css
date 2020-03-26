@@ -1,3 +1,13 @@
+/* Set all elements to border-box model */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 /* GLOBAL STYLE */
 
 body {
@@ -27,6 +37,7 @@ header {
 }
 
 .logo-icon {
+    box-sizing: content-box;
     display: inline-block;
     height: 32px;
     width: 32px;
@@ -45,7 +56,6 @@ header {
 /* Search input */
 
 nav {
-    box-sizing: border-box;
     height: inherit;
     width: calc(100% - 451px);
     overflow: hidden;
