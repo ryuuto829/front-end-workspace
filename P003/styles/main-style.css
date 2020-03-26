@@ -1,0 +1,87 @@
+/* SET ALL ELEMENTS TO BORDER-BOX MODEL */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* GLOBAL STYLE */
+
+body {
+    background: #32373d;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* VISUAL GUIDE (DELETE LATER) */
+
+1.main-nav {
+    outline: 1px solid red;
+}
+
+1.side-menu, li {
+    outline: 1px solid blue;
+}
+
+/* MAIN HEADER STYLE */
+
+header {
+    background-color: #000000;
+    color: #e4e7eb;
+    padding: 8px 20px 0 20px;
+    height: 64px;
+}
+
+li a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px;
+    color: #e4e7eb;
+}
+
+nav ul>li {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* Logo & navigation bar style */
+
+.main-nav ul {
+    display: block;
+    margin-left: 35px;
+}
+
+.main-nav ul>li {
+    display: inline-block;
+}
+
+.logo-icon {
+    width: 60px;
+    height: 20px;
+}
+
+.main-nav ul>li:first-child {
+    margin: 0 30px 0 0;
+}
+
+.main-nav ul>li a:hover {
+    border-bottom: 2px solid blue;
+}
+
+.main-nav ul>li:first-child a:hover {
+    border-bottom: none;
+}
