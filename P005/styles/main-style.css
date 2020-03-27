@@ -1,0 +1,126 @@
+@import '/common-files/normalize.css';
+/* SET ALL ELEMENTS TO BORDER-BOX MODEL */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* GLOBAL STYLE */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: #32373d;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* MY STYLE */
+
+.wrap {
+    width: 80%;
+    margin: 5em auto 0 auto;
+    background-color: white;
+    padding: 0.5em;
+}
+
+/* MAIN TABLE STYLE */
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 0.1rem solid gainsboro;
+    text-align: center;
+}
+
+th, td {
+    font-size: 1.6rem;
+}
+
+th {
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+td {
+    overflow: hidden;
+    padding: 0.7em;
+    border-bottom: 0.1rem solid gainsboro;
+}
+
+tbody>td {
+    border-bottom: 0.1rem solid gainsboro;
+}
+
+tbody>td:first-child {
+    border-bottom: none;
+}
+
+td:after {
+    display: block;
+}
+
+.price {
+    background-color: red;
+}
+
+/* Price row */
+
+.price>td::before {
+    content: "$";
+}
+
+.price>td::after {
+    content: "Per month";
+    text-transform: uppercase;
+}
+
+/* Disk space */
+
+.disk-space>td:after {
+    content: "Disk Space";
+}
+
+/* Bandwidth*/
+
+.bandwidth>td:after {
+    content: "Bandwidth";
+}
+
+/* Emails accounts */
+
+.email>td:after {
+    content: "Emails accounts";
+}
+
+/* Subdomains */
+
+.subdomains>td:after {
+    content: "Subdomains";
+}
+
+/* Time support */
+
+.support>td:after {
+    content: "Time support";
+}
+
+/* Shadows */
+
+/* Left shadow */
+
+td:nth-child(1), th:nth-child(1) {
+    box-shadow: inset -144px 0px 80px -169px rgba(0, 0, 0, 0.75);
+}
+
+/* Right shadow */
+
+td:nth-child(3), th:nth-child(3) {
+    box-shadow: inset 144px 0px 80px -169px rgba(0, 0, 0, 0.75);
+}
