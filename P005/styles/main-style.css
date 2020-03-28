@@ -18,6 +18,7 @@ html {
 body {
     background: #32373d;
     font-family: 'Open Sans', sans-serif;
+    color: #575859;
 }
 
 /* MY STYLE */
@@ -39,46 +40,58 @@ table {
     text-align: center;
 }
 
-th, td {
-    font-size: 1.6rem;
-}
-
 th {
     text-transform: uppercase;
     padding: 1em;
+    font-size: 1.6rem;
 }
 
 td {
     overflow: hidden;
-    padding: 0.7em;
+    padding: 0.8em;
     border-bottom: 0.1rem solid gainsboro;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
-tbody>td {
+tbody td {
     border-bottom: 0.1rem solid gainsboro;
-}
-
-tbody>td:first-child {
-    border-bottom: none;
 }
 
 td:after {
     display: block;
+    font-weight: 500;
+    color: #b1b2b5;
+    line-height: 1.4em;
 }
 
-.price {
+.price>td {
     background-color: red;
+    color: white;
+    font-size: 4rem;
+    font-weight: 500;
 }
+
+.price>td {
+    border-bottom: none;
+    padding: 0.3em;
+}
+
+/* Add info content */
 
 /* Price row */
 
 .price>td::before {
     content: "$";
+    font-size: 1.2rem;
+    padding-right: 0.5em;
 }
 
 .price>td::after {
     content: "Per month";
     text-transform: uppercase;
+    font-size: 1.2rem;
+    color: white;
 }
 
 /* Disk space */
@@ -123,4 +136,22 @@ td:nth-child(1), th:nth-child(1) {
 
 td:nth-child(3), th:nth-child(3) {
     box-shadow: inset 144px 0px 80px -169px rgba(0, 0, 0, 0.75);
+}
+
+/* Buttons style */
+
+button {
+    width: 7em;
+    background-color: red;
+    border: none;
+    padding: 0.8em;
+    color: white;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: white;
+    outline: 0.2rem solid red;
+    color: #575859;
+    cursor: pointer;
 }
