@@ -1,12 +1,13 @@
 # front-end-workspace
 
-Quick reference to project list:  
-`Codepen` - project is posted in [my CodePen profile](https://codepen.io/ryuuto829); **Title** - project is finished; Title - project is unfinished/in progress/abandoned. 
+#### Quick reference to project list:  
+`Codepen` - project is posted on [my CodePen profile](https://codepen.io/ryuuto829);  
+\[ **Title** \] - project is finished; \[ Title \] - project is unfinished/in progress/abandoned.  
 
 ### List of tiny projects:
-P001 - About bar from Reddit  
-P002 - Header search input from Reddit  
-P003 - Navigation bar buttons from Sony  
-P004 - **My Virtual Keyboard**  
+P001 - About bar from  
+P002 - Header search input  
+P003 - Navigation bar buttons  
+P004 - `Codepen` **My Virtual Keyboard** [check it!](https://codepen.io/ryuuto829/pen/yLNGmJL)
 P005 - **Pricing table on pure CSS with shadows**  
-P006 -  
+P006 - Aside bar (try BEM methodology)  

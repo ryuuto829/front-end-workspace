@@ -1,20 +1,21 @@
-/* SET ALL ELEMENTS TO BORDER-BOX MODEL */
+/* GLOBAL RULES FOR ALL PROJECTS */
 
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
 }
 
 *, *::before, *::after {
     box-sizing: inherit;
 }
 
-/* GLOBAL STYLE */
+/* || GENERAL STYLE */
 
 body {
     background: #32373d;
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    line-height: 50px;
+    font-size: 1.6em;
+    line-height: 5rem;
     margin: 0;
 }
 
@@ -27,13 +28,14 @@ li {
     list-style: none;
 }
 
-/* KEYBOARD STYLE */
+/* || KEYBOARD STYLE */
 
 .board {
-    width: 890px;
-    margin: 50px auto 0 auto;
-    padding: 5px;
+    width: 89rem;
+    margin: 5rem auto 0 auto;
+    padding: 0.5rem;
     border: 1px solid grey;
+    border-radius: 5px;
     user-select: none;
 }
 
@@ -43,11 +45,11 @@ ul {
 
 li {
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     overflow: hidden;
     background-color: #ebf2ef;
-    margin: 3px;
+    margin: 0.3rem;
     text-align: center;
     vertical-align: middle;
     position: relative;
@@ -55,56 +57,56 @@ li {
 }
 
 li[class] {
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 sup {
     position: absolute;
-    line-height: 20px;
+    line-height: 2rem;
     top: 0;
-    left: 35px;
+    left: 3.5rem;
 }
 
 /* Long buttons */
 
 .right-long-btn {
     text-align: right;
-    padding-right: 5px;
+    padding-right: 0.5rem;
 }
 
 .left-long-btn {
     text-align: left;
-    padding-left: 5px;
+    padding-left: 0.5rem;
 }
 
 .btn-backspace, .btn-tab {
-    width: 80px;
+    width: 8rem;
 }
 
 .btn-capslock, .btn-enter {
-    width: 95px;
+    width: 9.5rem;
 }
 
 .btn-shift {
-    width: 125px;
+    width: 12.5rem;
 }
 
 /* Last line buttons */
 
 .btn-ctrl, .btn-fn, .btn-windows, .btn-alt {
-    width: 50px;
+    width: 5rem;
 }
 
 .fix-ctrl {
-    width: 65px;
+    width: 6.5rem;
 }
 
 .btn-space {
-    width: 290px;
+    width: 29rem;
 }
 
 .white-space {
-    width: 186px;
+    width: 18.6rem;
     background-color: unset;
 }
 
