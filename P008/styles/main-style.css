@@ -1,0 +1,190 @@
+/* GLOBAL RULES */
+
+@import '/common-files/normalize.css';
+/**/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* || GENERAL STYLES */
+
+body {
+    background-color: #32373d;
+    font-family: Calibri, 'Open Sans', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+header {
+    background-color: #2b2b2b;
+    color: #777777;
+    margin-top: 2rem;
+}
+
+svg {
+    width: 3rem;
+    height: 3rem;
+    /*outline: 1px solid blue;*/
+}
+
+/* Main content wrapper */
+
+.wrap {
+    max-width: 1100px;
+    margin: 2rem auto 0 auto;
+    background-color: #2b2b2b;
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+}
+
+/* || MAIN NAVIGATION BAR */
+
+.main-nav {
+    flex: 1;
+}
+
+/* Top menu */
+
+.menu {
+    display: flex;
+    flex-flow: wrap;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__item {
+    list-style: none;
+}
+
+.menu__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 1rem;
+    color: inherit;
+}
+
+.menu__link:hover {
+    background-color: grey;
+    fill: white;
+}
+
+.menu__title {
+    margin: 0 0 0 1rem;
+}
+
+.menu__icon {
+    fill: white;
+}
+
+/* Bottom menu */
+
+.sub-menu {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-menu__item {
+    list-style: none;
+}
+
+.sub-menu__link {
+    display: block;
+    text-decoration: none;
+    color: #777777;
+    padding: 1rem;
+}
+
+.sub-menu__link:hover {
+    background-color: #171717;
+    color: white;
+}
+
+/* || Follow social links */
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    fill: #2b2b2b;
+    flex: 0 25rem;
+}
+
+.social__wrap {
+    display: flex;
+    background-color: #eef205;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.social__link {
+    display: block;
+    padding: 1rem;
+}
+
+.social__link:hover {
+    background-color: grey;
+    fill: white;
+}
+
+.social__icon {
+    display: block;
+}
+
+/* Horizontal line */
+
+.line {
+    outline: 2px solid #eef205;
+}
+
+header>.line {
+    position: relative;
+    width: 100%;
+    top: 5rem;
+    z-index: 1;
+}
+
+/* Hiding source svg icon */
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 940px) {
+
+    .menu__title {
+        display: none;
+    }
+    .menu__item {
+        flex: 1 7rem;
+        display: flex;
+        justify-content: center;
+    }
+    .sub-menu {
+        display: none;
+    }
+    .line {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .social {
+        display: none;
+    }
+}

@@ -10,5 +10,7 @@ P002 - Header search input
 P003 - Navigation bar buttons  
 P004 - `Codepen` **My Virtual Keyboard** [check it!](https://codepen.io/ryuuto829/pen/yLNGmJL)  
 P005 - **Pricing table on pure CSS with shadows**  
-P006 - **Aside bar (try BEM methodology)**  
+P006 - `Codepen` **Aside bar (try BEM methodology)** [check it!](https://codepen.io/ryuuto829/pen/mdJvmXd)  
 P007 - `Codepen` Horizontal Menu with triangle & hamburger icon on pure CSS [check it!](https://codepen.io/ryuuto829/pen/mdJvWaa)  
+P008 - `Codepen` **Navbar menu with flexbox on pure CSS** [check it!](https://codepen.io/ryuuto829/pen/LYVqmrO)  
+P009 -    
