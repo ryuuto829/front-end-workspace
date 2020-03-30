@@ -1,0 +1,154 @@
+/* GLOBAL RULES FOR ALL PROJECTS */
+
+@import '/common-files/normalize.css';
+/**/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* || GENERAL STYLES */
+
+body {
+    background-color: #32373d;
+    font-family: Calibri, 'Open Sans', Arial, sans-serif;
+}
+
+nav {
+    background-color: white;
+    color: #777777;
+    padding: 0 2rem;
+    margin-top: 2em;
+    overflow: hidden;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+/* || MAIN STYLE */
+
+.menu {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.menu__item {
+    display: inline-block;
+    list-style: none;
+}
+
+.menu__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.4rem 2rem 1.8rem 2rem;
+    border-bottom: 0.2rem solid transparent;
+    border-top: 0.6rem solid transparent;
+    padding-top: 1.4rem;
+    border-right: 1px solid #E7E7E7;
+}
+
+.menu__item:first-child {
+    border-left: 1px solid #E7E7E7;
+}
+
+/* || DYNAMIC STYLE */
+
+/* Non-active page status */
+
+.menu__link:hover {
+    color: red;
+    padding-top: 0;
+    border-bottom: 0.3rem solid red;
+    border-top: 0.3rem solid red;
+}
+
+/* CSS trick to create Triangle */
+
+.menu__link:hover:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 0.8rem solid transparent;
+    border-top: 0.9rem solid red;
+    margin: 0 auto;
+}
+
+/* Current page status */
+
+.menu__link--active {
+    color: red;
+    border-bottom: 0.3rem solid red;
+}
+
+.menu__link--active:hover {
+    background-color: red;
+    color: white;
+}
+
+/* || SEARCHBAR STYLE*/
+
+input {
+    float: right;
+    width: calc(100% - 70rem);
+    border: 1px solid #E7E7E7;
+    font-weight: 400;
+    line-height: 2;
+    padding: 0 2rem;
+    margin: 1.5rem auto 1.5rem 0;
+}
+
+/* || HAMBURGER ICON */
+
+.hamburger {
+    display: none;
+}
+
+.hamburger__line {
+    width: 3.5rem;
+    height: 0.5rem;
+    background-color: #777777;
+    margin: 0.6rem 0;
+}
+
+/* || Some simple resposive rules */
+
+@media (max-width: 950px) {
+    input {
+        display: block;
+        width: 100%;
+    }
+    .menu__link {
+        border-bottom: 0.3rem solid #E7E7E7;
+    }
+    .menu__link--active {
+        border-bottom: 0.3rem solid red;
+    }
+}
+
+@media (max-width: 687px) {
+    .menu {
+        display: none;
+    }
+    input {
+        display: block;
+        width: 80%;
+    }
+    .hamburger {
+        display: inline-block;
+        width: auto;
+        margin: 1.25rem 5% 1.25rem 0;
+    }
+    .hamburger:hover {
+        cursor: pointer;
+    }
+}
