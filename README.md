@@ -13,4 +13,4 @@ P005 - **Pricing table on pure CSS with shadows**
 P006 - `Codepen` **Aside bar (try BEM methodology)** [check it!](https://codepen.io/ryuuto829/pen/mdJvmXd)  
 P007 - `Codepen` Horizontal Menu with triangle & hamburger icon on pure CSS [check it!](https://codepen.io/ryuuto829/pen/mdJvWaa)  
 P008 - `Codepen` **Navbar menu with flexbox on pure CSS** [check it!](https://codepen.io/ryuuto829/pen/LYVqmrO)  
-P009 -    
+P009 - **Minimal cards on CSS Grid**  
