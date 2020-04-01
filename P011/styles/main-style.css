@@ -1,0 +1,141 @@
+/* GLOBAL RULES */
+
+@import '/common-files/normalize.css';
+/**/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* || GENERAL STYLES */
+
+body {
+    font-family: Calibri, 'Open Sans', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #777777;
+}
+
+/* || MAIN STYLE */
+
+/* Header */
+
+.top-head {
+    text-align: center;
+    padding: 8rem;
+    background-color: #1abc9c;
+}
+
+.top-head__name {
+    margin: 3rem;
+}
+
+.top-head__desc {
+    margin: 3rem;
+}
+
+/* Navigation */
+
+nav {
+    text-align: center;
+    background-color: #32373d;
+    overflow: hidden;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+}
+
+.menu__item {
+    list-style: none;
+}
+
+.menu__link {
+    display: block;
+    float: left;
+    text-decoration: none;
+    padding: 2rem 4rem;
+    color: inherit;
+}
+
+.menu__link--right {
+    float: right;
+}
+
+.menu__link:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Main content */
+
+main {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 2.4fr;
+}
+
+/* Side bar */
+
+aside {
+    background-color: #f1f1f1;
+}
+
+figure {
+    margin: 0;
+}
+
+.side {
+    padding: 2rem;
+}
+
+.side__img {
+    display: block;
+    background-color: #afafaf;
+    padding: 2rem 2rem;
+    margin: 1rem 0;
+}
+
+.side__img--big {
+    padding: 8rem 2rem;
+}
+
+/* Main section*/
+
+.main {
+    padding: 2rem;
+}
+
+.post__desc {
+    margin: 0;
+}
+
+.post__img {
+    display: block;
+    background-color: #afafaf;
+    padding: 8rem 2rem;
+    margin: 1rem 0;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    background-color: #32373d;
+}
+
+footer p {
+    margin: 0;
+    padding: 4rem;
+}
+
+@media(max-width: 700px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
