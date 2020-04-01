@@ -1,0 +1,107 @@
+/* GLOBAL RULES */
+
+@import '/common-files/normalize.css';
+/**/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* || GENERAL STYLES */
+
+body {
+    background-color: #32373d;
+    font-family: Calibri, 'Open Sans', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #777777;
+    position: relative;
+}
+
+/* Custom scroll */
+
+.scroll {
+    margin: 2rem auto 0 auto;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #32373d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+/* || MAIN STYLE */
+
+.wrap {
+    border: 1px solid grey;
+    border-radius: 5px;
+    overflow: auto;
+    position: fixed;
+    margin: 2rem auto;
+    max-width: 400px;
+    height: 400px;
+    left: 0;
+    right: 0;
+}
+
+.mess {
+    display: flex;
+    position: relative;
+    padding: 1rem;
+    padding-right: 2rem;
+}
+
+.mess__avatar {
+    position: sticky;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    align-self: flex-end;
+}
+
+.mess__avatar:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 1rem 2rem;
+    border-color: transparent transparent white transparent;
+    position: absolute;
+    bottom: 0;
+    left: 5rem;
+}
+
+.mess_avatar--one {
+    background-color: darkgrey;
+}
+
+.mess_avatar--two {
+    background-color: #575757;
+}
+
+.mess__textbox {
+    flex: 1;
+}
+
+.mess__text {
+    padding: 1rem;
+    margin: 0 0 0 2rem;
+    background-color: white;
+    border-radius: 6px 6px 6px 0;
+}
