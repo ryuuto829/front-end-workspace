@@ -5,7 +5,8 @@
 \[ **Title** \] - project is finished; \[ Title \] - project is unfinished/in progress/abandoned.  
 
 ### List of tiny projects:
-P011 - **Schematic simple layout on grid**
+P012 - `Codepen` **Simple Dropdown mega menu on pure CSS** [check it!](https://codepen.io/ryuuto829/pen/poJYQJW)  
+P011 - **Schematic simple layout on grid**  
 P010 - `Codepen` **2020 Year Calendar on CSS Grid** [check it!](https://codepen.io/ryuuto829/pen/oNXVxGa)  
 P009 - **Minimal cards on CSS Grid**  
 P008 - `Codepen` **Navbar menu with flexbox on pure CSS** [check it!](https://codepen.io/ryuuto829/pen/LYVqmrO)  

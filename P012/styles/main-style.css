@@ -1,0 +1,129 @@
+/* GLOBAL RULES */
+
+@import '/common-files/normalize.css';
+/**/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* || GENERAL STYLES */
+
+body {
+    background-color: #32373d;
+    font-family: Calibri, 'Open Sans', Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #777777;
+    position: relative;
+}
+
+/* || MAIN STYLE */
+
+.menu {
+    background-color: white;
+    overflow: hidden;
+    text-align: center;
+}
+
+.menu__link {
+    float: left;
+    text-decoration: none;
+    color: inherit;
+    padding: 2rem 3rem;
+    background-color: white;
+    position: relative;
+    border-right: 1px solid #cacaca94;
+}
+
+.menu__link--drop {
+    padding-right: 4rem;
+}
+
+.menu__link--drop:after {
+    content: "";
+    display: inline-block;
+    border: 1rem solid transparent;
+    border-top: 1rem solid #777777;
+    position: absolute;
+    top: 2.7rem;
+    right: 1rem;
+}
+
+.menu__link:hover {
+    background-color: black;
+    color: white;
+}
+
+.menu__link--drop:hover::after {
+    border-top: 1rem solid white;
+}
+
+/* || Mega menu */
+
+.mega-menu {
+    display: none;
+    clear: both;
+    position: absolute;
+    top: 6.4rem;
+    width: 100%;
+}
+
+.dropdown:hover .mega-menu {
+    display: block;
+}
+
+.mega-menu__title {
+    background-color: red;
+    color: white;
+    padding: 2rem;
+    margin: 0;
+    text-align: left;
+}
+
+.mega-menu__wrap {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+}
+
+.mega-menu__col {
+    flex: 1 20rem;
+    background-color: #d2d2d2;
+    color: black;
+    border-right: 1px solid #cacaca;
+}
+
+.mega-menu__col p {
+    background-color: #adadad;
+    margin: 0;
+    padding: 2rem;
+    color: white;
+}
+
+.mega-menu__col:last-child {
+    border: none;
+}
+
+.mega-menu__link {
+    display: block;
+    text-decoration: none;
+    padding: 2rem;
+    color: inherit;
+}
+
+.mega-menu__link:hover {
+    background-color: red;
+    color: white;
+}
+
+@media(max-width: 650px) {
+    .mega-menu__wrap {
+        flex-direction: column;
+    }
+}
