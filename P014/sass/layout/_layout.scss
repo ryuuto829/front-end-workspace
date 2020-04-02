@@ -1,0 +1,30 @@
+// || MACRO LAYOUT
+
+// Main content layout
+.container {
+    max-width: 50rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: $color-bg-light;
+}
+
+// form layout
+.form {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @extend %border-grey;
+    border-radius: 10px;
+    padding: 2rem;
+    &__row {
+        display: flex;
+        flex-flow: nowrap;
+        margin-top: 2rem;
+        &:first-child {
+            margin: 0;
+        }
+        &:last-child {
+            justify-content: flex-end;
+        }
+    }
+}

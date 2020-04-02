@@ -1,0 +1,35 @@
+// || VARIABLES
+
+// Color variables
+$color-bg-dark: #32373d;
+$color-bg-light: white;
+$color-text: #777777;
+$color-border: #cacaca94;
+
+// Extend / Inheritance
+%border-grey {
+    border: 1px solid $color-border;
+}
+
+// || GLOBAL RULES
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+// || GENERAL STYLES
+
+body {
+    background-color: $color-bg-dark;
+    font-family: Calibri, "Open Sans", Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: $color-text;
+}

@@ -1,0 +1,29 @@
+// || MICRO COMPONNENTS
+
+// Form components
+.form {
+    &__label {
+        display: inline-block;
+        text-align: right;
+        flex: 8rem 0;
+        align-self: center;
+    }
+    &__input {
+        @extend %border-grey;
+        flex: 1;
+        margin-left: 1rem;
+        padding: 1rem;
+    }
+    &__btn {
+        @extend %border-grey;
+        flex:  1;
+        color: $color-text;
+        background-color: $color-bg-light;
+        padding: 1rem;
+        &:hover {
+            cursor: pointer;
+            background-color: red;
+            color: white;
+        }
+    }
+}

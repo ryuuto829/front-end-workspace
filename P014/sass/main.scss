@@ -1,0 +1,10 @@
+// Sass Project Architecture
+
+// Normilize
+@import '../../common-files/normalize';
+// Global rules (base, helpers, utils)
+@import "base/base";
+// Layout (macro)
+@import "layout/layout";
+// Style (micro)
+@import "components/components";
