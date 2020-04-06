@@ -1,0 +1,106 @@
+.box {
+    background-color: $bg-color;
+
+    &__flag {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            height: 0;
+            width: 0;
+            margin-top: -8px;
+            border: solid transparent;
+            border-width: 8px;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            background: #fff;
+            border-radius: 10px;
+            border: 4px solid #ff6150;
+            z-index: 20;
+        }
+
+        &--r {
+            flex-direction: row;
+            
+            &:before {
+                border-right-color: #0b334a;
+                right: 100%;
+            }
+            &::after {
+                left: -40px;
+            }
+        }
+
+        &--l {
+            flex-direction: row-reverse;
+
+            &::before {
+                left: 100%;
+                border-left-color: #0b334a;
+            }
+            &::after {
+                right: -40px;
+            }
+        }
+    }
+    &__flag-text {
+        position: relative;
+        font-size: rem($font-text);
+        color: $color-title;
+        background-color: $bg-title-color;
+        padding: 8px 10px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+        z-index: 10;
+    }
+    &__time {
+        position: relative;
+        font-size: 0.6em;
+        color: $color-title;
+        background-color: $bg-time-color;
+        padding: 4px;
+        z-index: 5;
+    }
+    &__content {
+        font-size: $font-text;
+        color: $color-text;
+        padding: 10px;
+        margin: 0;
+    }
+
+    &--r {
+        text-align: left;
+    }
+    &--l {
+        text-align: right;
+    }
+}
+
+@media (max-width: 900px){
+    .box  {   
+
+        &--l {
+            text-align: left;
+        }
+
+        &__flag {
+            &--l {
+                flex-direction: row;
+            }
+        }
+    }
+}

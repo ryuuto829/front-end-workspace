@@ -1,0 +1,12 @@
+.wrapper {
+    background-color: $bg-color;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+
+    &__main-title {
+        margin: 0 auto 20px auto;
+    }
+}

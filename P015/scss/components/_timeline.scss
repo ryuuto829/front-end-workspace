@@ -1,0 +1,61 @@
+.timeline {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &:before {
+        content: ' ';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        display: block;
+        width: 6px;
+        height: 100%;
+        margin-left: -3px;
+        background: #0b334a;
+        z-index: 5;
+    }
+
+    &__item {
+        position: relative;
+        list-style: none;
+        clear: both;
+        max-width: 400px;
+        z-index: 10;
+        margin: 15px 0;
+
+        &--r {
+            float: right;
+        }
+    
+        &--l {
+            float: left;
+        }
+    }
+}
+
+@media (max-width: 900px){
+    .timeline {   
+
+        &::before {
+            z-index: -1;
+        }
+
+        &__item {
+            list-style: none;
+            clear: both;
+            max-width: unset;
+            width: 100%;
+    
+            &--r {
+                float: unset;
+            }
+        
+            &--l {
+                float: unset;
+            }
+        }
+    }
+}
