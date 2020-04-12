@@ -1,6 +1,7 @@
 # Eloquent JavaScript
 
 ### List of Exercises:  
+E014 - Dominant writing direction  
 E013 - Everything  
 E012 - Your own loop  
 E011 - Flattening  
