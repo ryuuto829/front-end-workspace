@@ -56,3 +56,13 @@ for (let num = 1; num <= 100; num++) {
     console.log(text);
     text = "";
 }
+console.log("----------");
+
+// final version
+
+for (let i = 1; i <= 100; i++) {
+    let n = "";
+    if (!(i % 3)) n = "Fizz";
+    if (!(i % 5)) n += "Buzz";
+    console.log((n || i));
+}

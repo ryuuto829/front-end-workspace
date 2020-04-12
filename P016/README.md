@@ -1,6 +1,9 @@
 # Eloquent JavaScript
 
 ### List of Exercises:  
+E013 - Everything  
+E012 - Your own loop  
+E011 - Flattening  
 E010 - Deep comparison  
 E009 - A list  
 E008 - Reversing an array  
@@ -10,4 +13,4 @@ E005 - Recursion
 E004 - Minimum  
 E003 - Chessboard  
 E002 - FizzBuzz  
-E001 - Looping a triangle  
+E001 - Looping a triangle   

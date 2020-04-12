@@ -24,3 +24,10 @@ while (block.length <= 7) {
     console.log(block);
     block += "#";
 }
+console.log("----------");
+
+// final version
+
+for (let a = "#"; a.length <= 7; a +="#") {
+    console.log(a);
+}
