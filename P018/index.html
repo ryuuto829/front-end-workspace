@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+    <div class="board">
+        <p class="board__btn board__btn--new-game">New Game</p>
+        <p class="board__btn board__btn--roll">Roll dice</p>
+        <p class="board__btn board__btn--hold">Hold</p>
+        <div class="side-card side-card--player1 side-card--active">
+            <p class="side-card__player-name">Player 1</p>
+            <span class="side-card__score-roll">0</span>
+            <div class="side-card__score-box">
+                <p class="side-card__current">Current</p>
+                <span class="side-card__score-current">0</span>
+            </div>
+        </div>
+        <div class="side-card side-card--player2">
+            <p class="side-card__player-name">Player 2</p>
+            <span class="side-card__score-roll">0</span>
+            <div class="side-card__score-box">
+                <p class="side-card__current">Current</p>
+                <span class="side-card__score-current">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

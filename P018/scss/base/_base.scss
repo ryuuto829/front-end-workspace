@@ -1,0 +1,13 @@
+ html {
+    -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
+    box-sizing: border-box;
+ }
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+  
+  body {
+    margin: 0; // Remove the margin in all browsers.
+    background-color: #404040;
+  }
