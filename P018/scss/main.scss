@@ -32,12 +32,30 @@
         }
 
         &--roll {
-            bottom: 45px;
+            bottom: 65px;
         }
 
         &--hold {
-            bottom: 10px;
+            bottom: 30px;
         }
+    }
+
+    &__dice {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 6px;
+        background-color: red;
+        color: white;
+        text-align: center;
+        font-weight: 300;
+        line-height: 60px;
+        font-size: rem(40px);
+        vertical-align: middle;
+        padding: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 150px;
     }
 }
 
@@ -50,7 +68,7 @@
         color: #777;
         margin: 60px 0;
 
-        &:after {
+        &--active:after {
             content: '';
             display: inline-block;
             border-radius: 50%;
@@ -67,7 +85,7 @@
     &__score-box {
         background-color: red;
         max-width: 135px;
-        margin: 60px auto 0 auto;
+        margin: 60px auto 20px auto;
         padding: 10px;
         border-radius: 5px;
         overflow: hidden;

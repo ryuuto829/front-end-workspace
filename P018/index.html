@@ -12,22 +12,23 @@
 
     <div class="board">
         <p class="board__btn board__btn--new-game">New Game</p>
+        <div class="board__dice">1</div>
         <p class="board__btn board__btn--roll">Roll dice</p>
         <p class="board__btn board__btn--hold">Hold</p>
         <div class="side-card side-card--player1 side-card--active">
-            <p class="side-card__player-name">Player 1</p>
-            <span class="side-card__score-roll">0</span>
+            <p class="side-card__player-name side-card__player-name--active" id="name-0">Player 1</p>
+            <span class="side-card__score-roll" id="score-0">0</span>
             <div class="side-card__score-box">
                 <p class="side-card__current">Current</p>
-                <span class="side-card__score-current">0</span>
+                <span class="side-card__score-current" id="current-0">0</span>
             </div>
         </div>
         <div class="side-card side-card--player2">
-            <p class="side-card__player-name">Player 2</p>
-            <span class="side-card__score-roll">0</span>
+            <p class="side-card__player-name" id="name-1">Player 2</p>
+            <span class="side-card__score-roll" id="score-1">0</span>
             <div class="side-card__score-box">
                 <p class="side-card__current">Current</p>
-                <span class="side-card__score-current">0</span>
+                <span class="side-card__score-current" id="current-1">0</span>
             </div>
         </div>
     </div>
