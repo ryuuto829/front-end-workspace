@@ -5,8 +5,8 @@
 \[ **Title** \] - project is finished; \[ Title \] - project is unfinished/in progress/abandoned.  
 
 ### List of tiny projects:  
-P018 - Dice Game from js course  
-P017 - Coding challenge from js course "Tip calculator"  
+P018 - **Dice Game from js course**  
+P017 - **Coding challenge from js course "Tip calculator"**  
 P016 - Exercises from book "Eloquent JavaScript" (Learning JS)  
 P015 - `Codepen` **Lifestyle Timeline Elements** [check it!](https://codepen.io/ryuuto829/pen/RwPXNWb)  
 P014 - Simple style for form (Try SASS)  

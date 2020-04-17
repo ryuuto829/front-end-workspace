@@ -11,8 +11,14 @@
 <body>
 
     <div class="board">
+        <form action="" class="score">
+            <label for="score" class="score__name">Winning score:</label>
+            <input type="number" class="score__input" name="score">
+            <button type="button" onclick="getInputValue();" class="score__btn">SET SCORE</button>
+          </form>
         <p class="board__btn board__btn--new-game">New Game</p>
-        <div class="board__dice">1</div>
+        <div class="board__dice board__dice--0">1</div>
+        <div class="board__dice board__dice--1">1</div>
         <p class="board__btn board__btn--roll">Roll dice</p>
         <p class="board__btn board__btn--hold">Hold</p>
         <div class="side-card side-card--player1 side-card--active">
