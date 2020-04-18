@@ -132,3 +132,13 @@ function vowelsAndConsonants(s) {
         }
     }   
 }
+
+// Day 3: Arrays
+
+function getSecondLargest(nums) {
+    let array = nums.sort((x, y) => x < y);
+    return (array.filter((s,) => s < array[0]))[0];;
+}
+
+// Day 3: Try, Catch, and Finally
+
