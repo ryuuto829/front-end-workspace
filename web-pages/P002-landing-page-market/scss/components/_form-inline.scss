@@ -1,0 +1,17 @@
+.form-inline {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    &__log {
+        text-decoration: none;
+        color: $color-main;
+        padding: 8px;
+        font-size: rem(16px);
+        margin-right: 16px;
+
+    &:hover {
+        text-decoration: underline;
+        }
+    }
+}

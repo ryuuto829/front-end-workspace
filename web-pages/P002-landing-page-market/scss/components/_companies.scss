@@ -1,0 +1,15 @@
+.companies {
+    display: flex;
+    color: #999;
+    font-size: 4rem;
+    flex-flow: row wrap;
+
+    &__item {
+        flex: 0;
+        padding: 64px 50px 0 50px;
+
+        &:hover {
+            color: $color-text;
+        }
+    }
+}

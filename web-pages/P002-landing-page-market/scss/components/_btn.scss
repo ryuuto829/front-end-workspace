@@ -1,0 +1,32 @@
+.btn {
+    padding: 14px 22px;
+    font-size: rem(14px);
+    background-color: $color-main;
+    border-radius: 6px;
+    text-decoration: none;
+    color: $color-white; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: .3s ease-in;
+
+    &:hover {
+        background-color: $color-title;
+        }
+
+    &--white {
+        background-color: transparent;
+        border: 2px solid $color-white;
+        border-radius: 6px;
+    }
+    &--special {
+        padding: 13px;
+        color: $color-main;
+        background-color: $color-white;
+        border: 2px solid $color-main;
+        margin-right: 20px;
+
+        &:hover {
+            color: $color-white;
+        }
+    }
+}

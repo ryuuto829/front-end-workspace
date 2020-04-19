@@ -1,0 +1,10 @@
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    border-bottom: 1px solid $color-border;
+    background-color: $bg-color-white;
+    z-index: 4;
+}

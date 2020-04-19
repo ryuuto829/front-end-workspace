@@ -1,0 +1,9 @@
+// || MIXINS
+
+//  1. Add outline to element
+@mixin frame1 {
+    outline: 1px solid blue;
+  }
+@mixin frame2 {
+    outline: 1px solid red;
+}

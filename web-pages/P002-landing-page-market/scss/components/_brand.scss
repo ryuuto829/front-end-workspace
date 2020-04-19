@@ -1,0 +1,18 @@
+.brand {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: rem(36px);
+    color: $color-title;
+    position: relative;
+    padding-left: 35px;
+
+    &__icon {
+        position: absolute;
+        top: rem(5px);
+        left: 0;
+        font-size: rem(24px);
+        color: $color-main;
+    }
+}

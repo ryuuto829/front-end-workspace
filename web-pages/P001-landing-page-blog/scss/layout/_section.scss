@@ -1,0 +1,43 @@
+.section {
+    padding: 24px 15px;
+    max-width: 510px;
+    margin: 0 auto;
+
+    &__title {
+        text-align: left;
+        font-size: rem(30px);
+        line-height: rem(40px);
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $color-title;
+        margin: 0 0 24px 0;
+        padding: 0 15px;
+    
+        &--purple {
+            color: $color-main;
+        }
+
+        &--center {
+            text-align: center;
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    .section {
+        max-width: 690px;
+    }  
+}
+
+@media (min-width: 992px) {
+    .section {
+        max-width: 960px;
+    }  
+}
+
+@media (min-width: 1200px) {
+    .section {
+        max-width: 1140px;
+    }  
+}

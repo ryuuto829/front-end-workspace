@@ -1,0 +1,23 @@
+.menu {
+    padding: 0;
+    margin: 0;
+    color: $color-nav;
+    overflow: hidden;
+
+    &__item {
+        float: left;
+        list-style: none;
+        margin: 0 8px;
+    }
+
+    &__link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 8px;
+
+        &:hover {
+            color: $color-main;
+        }
+    }
+}

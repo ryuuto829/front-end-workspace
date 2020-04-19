@@ -1,0 +1,20 @@
+.card {
+    flex: 1 250px;
+    margin: 0 15px;
+    box-shadow: 1px 2px 6px 1px rgba(53, 54, 102, 0.08);;
+    border-radius: 5px;
+    transition: .3s ease-in;
+    padding: 24px;
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &__title {
+        font-size: rem(26px);
+        line-height: rem(35px);
+        font-weight: 500;
+        margin: 16px 0;
+    }
+}

@@ -1,0 +1,40 @@
+// || Mixins
+
+// Add outline
+
+@mixin frame1 {
+  outline: 1px solid blue;
+}
+@mixin frame2 {
+  outline: 1px solid red;
+}
+
+// || recalc 10px = 1 em
+
+$browser-context: 16;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+// || recalc 10px = 1 rem
+
+@function rem($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+      $pixels: $pixels * 1px;
+    }
+  
+    @if (unitless($context)) {
+      $context: $context * 1px;
+    }
+  
+    @return $pixels / $context * 1rem;
+  }

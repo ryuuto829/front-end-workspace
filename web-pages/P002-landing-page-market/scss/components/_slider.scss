@@ -1,0 +1,68 @@
+.slider {
+    position: relative;
+    border: 1px solid $color-border;
+    box-shadow: 1px 2px 6px 1px rgba(53, 54, 102, 0.08);
+    border-radius: 10px;
+    padding: 48px;
+    z-index: 2;
+    font-size: rem(20px);
+    max-width: 700px;
+
+    &__arrow {
+        width: 48px;
+        height: 48px;
+        border: 1px solid $color-border;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 48px;
+        color: $color-secondary;
+        position: absolute;
+        bottom: 50%;
+        background-color: $bg-color-white;
+        transition: .3s ease-in;
+        box-shadow: 1px 2px 6px 1px rgba(53, 54, 102, 0.08);
+
+        &--left {
+            left: -24px;
+        }
+        &--right {
+            right: -24px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-secondary;
+            color: $color-white;
+            border-color: $color-secondary;
+        }
+    }
+    &__message {
+        text-align: center;
+    }
+
+    &__circle {
+        margin: 0 auto;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    &__img {
+        width: auto;
+        max-height: 100%;
+        vertical-align: middle;
+        object-fit: cover;
+        object-position: center;
+    }
+    &__text {
+        margin: 20px 0 0 0;
+        line-height: rem(32px);
+        font-weight: 600;
+        color: $color-title;
+    }
+    &__author {
+        margin: 16px 0 0 0;
+        font-style: italic;
+        color: $color-text;
+    }
+}

@@ -1,0 +1,12 @@
+.link {
+    text-decoration: none;
+    color: $color-secondary;
+    font-size: 18px;
+    line-height: 26px;
+    transition: .3s ease-out;
+
+    &:hover {
+        color: inherit;
+        text-decoration: underline;
+    }
+}

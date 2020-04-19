@@ -1,0 +1,8 @@
+.article-group {
+    @include frame1;
+
+    &__post {
+        display: flex;
+    }
+
+}

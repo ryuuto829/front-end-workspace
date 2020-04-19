@@ -1,0 +1,11 @@
+.nav-toggler {
+    font-size: rem(24px);
+    color: $color-text;
+    border: none;
+    background-color: inherit;
+    padding: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

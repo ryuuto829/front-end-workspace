@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 0 auto;
+    background-color: $bg-color-white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+
+    &__brand {
+        margin-right: 48px;
+    }
+
+    &__nav-menu {
+        display: none;
+    }
+
+    &__nav-toggler {
+        display: block;
+    }
+
+    &__content {
+        flex: 1 100%;
+    }
+
+    &__content-img {
+        flex: 1 100%;
+    }
+
+    &__slider {
+        margin: 24px auto;
+        flex: 1 100%;
+        align-self: center;
+    }
+
+    &__mail {
+        margin-top: 48px;
+    }
+
+    &__companies {
+        justify-content: center;
+    }
+
+    &--grey {
+        background-color: $bg-color-light;
+    }
+
+    &--trans {
+        background-color: transparent;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+
+        &__content {
+            flex: 2;
+        }
+        &__content-img {
+            flex: 3;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+
+        &__nav-toggler {
+            display: none;
+        }
+
+        &__nav-menu {
+            display: flex;
+            flex: 1;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}

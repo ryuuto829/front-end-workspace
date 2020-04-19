@@ -1,0 +1,12 @@
+.content-img {
+    padding: 0 15px;
+
+    &__image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    &--equal {
+        flex: 1 250px;
+    }
+}

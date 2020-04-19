@@ -1,0 +1,24 @@
+.section {
+        padding: 48px 0;
+        background-color: $bg-color-white;
+
+    &--first {
+        height: 100%;
+        padding: 90px 0;
+        background-color: $bg-color-light;
+    }
+
+    &--grey {
+        background-color: $bg-color-light; 
+    }
+
+    &--trans {
+        background-color:rgba(25, 51, 101, 0.1);
+        background-image: linear-gradient(to right, rgba(25, 51, 101, 0.85), rgba(0, 0, 0, 0.08)), url(/img/market.jpg);
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        background-size: cover;
+        max-width: 100%;
+        background-position: center;
+        background-attachment: fixed;
+    }
+}

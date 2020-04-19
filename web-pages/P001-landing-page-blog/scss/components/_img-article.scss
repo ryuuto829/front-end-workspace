@@ -1,0 +1,94 @@
+// || MAIN STYLE
+.img-article {
+    display: block;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    width: 100%;
+
+// || HOVER OVER WRAPPER
+    &:hover {
+        cursor: pointer;
+
+        // do it on hover over wrapper
+        .img-article__image:before {
+                opacity: 0; 
+        }
+        .img-article__caption {
+            transform: translate(0, -40px);
+        }
+
+        .img-article__date {
+            opacity: 1;
+            transform: translate(0, -5px);
+        }
+    }    
+
+// || IMAGE BOX
+    &__image {
+        display: block;
+        height: 100%;
+        background-color: $bg-color-img;
+        transition: opacity ease-in .3s;
+        position: relative;
+        color: $color-small;
+
+        &:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(2,0,36,0.1) 0%, rgba(255,255,255,0.1) 53%, rgba(2,0,36,0.1) 100%);
+            opacity: 1;
+            transition: opacity ease-in .3s;
+        }
+    }
+
+// || WRAPPER WITH CAPTION AND DATE TEXT
+    &__caption {
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        transition: transform ease-in .3s;
+        margin-bottom: rem(20px);
+        padding: 0 30px;
+
+        // Modificator - vertically stick to bottom
+        &--bottom {
+            top: initial;
+            bottom: 0;
+        }
+    }
+// || NAME OF ARTICLE
+    &__name {
+        font-size: rem(20px);
+        line-height: rem(28px);
+        margin: 0;
+        font-weight: 500;
+        color: $color-text-white;
+    }
+
+// || DATE (by default is hidden)
+    &__date {
+        font-size: rem(12px);
+        line-height: rem(30px);
+        margin: 0;
+        color: $color-small;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        opacity: 0;
+        transition-delay: 0.1s;
+        transition: opacity ease-in .3s;
+        transition: transform ease-in .3s;
+    }
+
+// || BOLD TEXT
+    &__bold {
+        font-weight: 700;
+    }
+}

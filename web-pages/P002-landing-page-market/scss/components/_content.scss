@@ -1,0 +1,49 @@
+.content {
+    padding: 15px;
+
+    &__title {
+        font-size: rem(40px);
+        line-height: rem(46px);
+        font-weight: 700;
+        margin: 0;
+
+        &--white {
+            color: $color-white;
+            max-width: 500px;
+        }
+    }
+
+    &__sub-title {
+        font-size: rem(35px);
+        line-height: rem(40px);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    &--center {
+        text-align: center;
+        flex: 1 100%;
+    }
+
+    &__main-text {
+        margin: 16px 0 48px 0;
+
+        &--white {
+            color: $color-white;
+            max-width: 500px;
+        }
+    }
+
+    &--equal {
+        flex: 1 250px;
+    }
+
+    &__btn-group {
+        margin-top: 24px;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
