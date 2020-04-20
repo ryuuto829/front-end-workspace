@@ -1,8 +1,15 @@
-# front-end-workspace
+# front-end-workspace / learning-exercises 
 
-#### Quick reference to project list:  
-`Codepen` - project is posted on [my CodePen profile](https://codepen.io/ryuuto829);  
-\[ **Title** \] - project is finished; \[ Title \] - project is unfinished/in progress/abandoned.  
+## Table of content
+- [Overview](#overview)
+- [List of exercises](#list-of-exercises)
 
-### List of tiny projects:  
-P001 - Exercises from book "Eloquent JavaScript" (Learning JS)  
+## Overview:  
+
+Will be added soon ...
+
+## List of exercises:  
+
+No | Project title | Learning Technologies |
+---- | ---- | ---- 
+P001 | **Exercises from book "Eloquent JavaScript"** | `JavaScript` 
