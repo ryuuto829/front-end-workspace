@@ -6,28 +6,25 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    border-bottom: 1px solid $color-border;
 
     &__type {
-        @include reset-form;
+        @include form-style;
         margin-right: 10px;
-        padding: 12px 15px;
         flex: 0;
     }
     &__description {
-        @include reset-form;
-        padding: 12px 15px;
+        @include form-style;
         margin-right: 10px;
         width: 250px;
     }
     &__value {
-        @include reset-form;
-        padding: 12px 15px;
+        @include form-style;
         margin-right: 10px;
         width: 150px;
     }
     &__btn {
-        @include reset-form;
-        padding: 12px 15px;
+        @include form-style;
         flex: 0;
     }
 }

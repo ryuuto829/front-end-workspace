@@ -8,9 +8,14 @@
     outline: 1px solid red;
 }
 
-@mixin reset-form {
+@mixin form-style {
   font-family: inherit;
   font-size: inherit;
+  padding: 12px 15px;
+  border: 1px solid $color-border;
+  transition: border 0.3s;
+  background-color: white;
+  border-radius: 5px;
 }
 
 // || FUNCTIONS

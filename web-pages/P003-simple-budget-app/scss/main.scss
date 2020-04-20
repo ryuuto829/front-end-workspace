@@ -1,5 +1,3 @@
-@import '_tools';
-
 // || VARIABLES
 
 $color-income: #28B9B5;
@@ -7,6 +5,10 @@ $color-expenses: #FF5049;
 $color-title-text: white;
 $color-name: #444;
 $color-add: #f7f7f7;
+$color-border:#e7e7e7;
+$color-text: #555;
+
+@import '_tools';
 
 // || GENERAL
 
@@ -27,3 +29,22 @@ body {
 
 @import 'components/_budget';
 @import 'components/_add';
+@import 'components/_budget-list';
+
+
+.container {
+    max-width: 1000px;
+    padding: 60px 0;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    
+}
+.wrap {
+    background-color: white;
+} 
+
+.right {
+    float: right;
+}

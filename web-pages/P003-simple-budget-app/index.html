@@ -12,7 +12,7 @@
 <body>
 
     <div class="budget">
-        <p class="budget__title"> Available Budget in April 2020:</p>
+        <h1 class="budget__title"> Available Budget in April 2020:</h1>
         <p class="budget__value budget__value--general">+ 12,049.00</p>
         <div class="budget__stats budget__stats--income">
             <p class="budget__name">INCOME</p>
@@ -40,7 +40,50 @@
         <button class="add__btn">Add</button>
     </div>
 
-    <script src="js/app.js"></script>
+    <div class="wrap">
+        <div class="container">
+
+            <div class="budget-list budget-list--income">
+                <h2 class="budget-list__title">INCOME</h2>
+
+                <div class="budget-list__item">
+                    <p class="budget-list__description">Some text here .. thats it</p>
+                    <p class="budget-list__value">+ 2056.23</p>
+                    <div class="close icon"></div>
+                </div>
+
+                <div class="budget-list__item">
+                    <p class="budget-list__description">Some text here .. thats it</p>
+                    <p class="budget-list__value">+ 2056.23</p>
+                    <div class="close icon"></div>
+                </div>
+            </div>
+
+            <div class="budget-list budget-list--expenses">
+                <h2 class="budget-list__title">EXPENSES</h2>
+
+                <div class="budget-list__item">
+                    <p class="budget-list__description">Some text here .. thats it</p>
+                    <div class="right">
+                        <p class="budget-list__value budget-list__value--left">+ 2056.23</p>
+                        <div class="budget-list__percentage">50 %</div>
+                        <div class="close icon"></div>
+                    </div>
+                </div>
+
+                <div class="budget-list__item">
+                    <p class="budget-list__description">Some text here .. thats it</p>
+                    <div class="right">
+                        <p class="budget-list__value budget-list__value--left">+ 2056.23</p>
+                        <div class="budget-list__percentage">50 %</div>
+                        <div class="close icon"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="js/app.js"></script>
 </body>
 
 </html>
