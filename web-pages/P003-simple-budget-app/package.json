@@ -1,0 +1,15 @@
+{
+  "name": "p003-simple-budget-app",
+  "version": "1.0.0",
+  "description": "Simple Budget app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss/ -o css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.13.1"
+  }
+}

@@ -1,0 +1,72 @@
+// TOP PANEL WHICH DISPLAYS BUDGET VALUES
+
+.budget {
+    max-width: 350px;
+    color: $color-title-text;
+    text-align: center;
+    margin: 15px auto;
+    font-weight: 300;
+
+    &__title {
+        font-size: rem(18px);
+        margin: 0;
+    }
+    &__value {
+        display: inline-block;
+        font-size: rem(16px);
+        margin: 0;
+        font-weight: 400;
+
+        &--general {
+            font-size: rem(46px);
+            margin: 10px 0 25px 0 ;
+            font-weight: 300;
+        }
+    }
+    &__stats {
+        overflow: hidden;
+        padding: 12px;
+        margin-bottom: 10px;
+
+        &--income {
+            background-color: $color-income;
+        }
+
+        &--expenses {
+            background-color: $color-expenses;
+        }
+    }
+    &__name {
+        float: left;
+        color: $color-name;
+        font-size: rem(13px);
+        margin: 0;
+        line-height: 22px;
+        font-weight: 400;
+    }
+    &__percentage {
+        display: inline-block;
+        width: 34px;
+        font-size: rem(11px);
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        line-height: 22px;
+        margin-left: 5px;
+        vertical-align: top;
+    }
+
+    &__right {
+        float: right;
+    }
+}
+
+@media (max-width: 630px) {
+    .budget {
+        max-width: unset;
+        width: 100%;
+
+        &__stats {
+            padding: 14px 20px;
+        }
+    }
+}

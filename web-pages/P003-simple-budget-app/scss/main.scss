@@ -1,0 +1,29 @@
+@import '_tools';
+
+// || VARIABLES
+
+$color-income: #28B9B5;
+$color-expenses: #FF5049;
+$color-title-text: white;
+$color-name: #444;
+$color-add: #f7f7f7;
+
+// || GENERAL
+
+html {
+    -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
+    box-sizing: border-box;
+ }
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: #404040; // delete
+}
+
+@import 'components/_budget';
+@import 'components/_add';

@@ -1,0 +1,76 @@
+.add {
+    padding: 14px;
+    background-color: $color-add;
+    font-size: rem(14px);
+    font-weight: 400;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    &__type {
+        @include reset-form;
+        margin-right: 10px;
+        padding: 12px 15px;
+        flex: 0;
+    }
+    &__description {
+        @include reset-form;
+        padding: 12px 15px;
+        margin-right: 10px;
+        width: 250px;
+    }
+    &__value {
+        @include reset-form;
+        padding: 12px 15px;
+        margin-right: 10px;
+        width: 150px;
+    }
+    &__btn {
+        @include reset-form;
+        padding: 12px 15px;
+        flex: 0;
+    }
+}
+
+@media (max-width: 630px) {
+    .add {
+        
+        &__description {
+            order: 1;
+            flex: 1 100%;
+            margin: 0 0 10px 0;
+        }
+        &__type {
+            order: 2;
+        }
+        &__value {
+            order: 3;
+            flex: 1;
+        }
+        &__btn {
+            order: 4;
+        }
+    }
+}
+
+@media (max-width: 330px) {
+    .add {
+
+        &__description {
+            order: 1;
+        }
+        &__type {
+            order: 3;
+            flex: 1;
+        }
+        &__value {
+            order: 2;
+            flex: 1 100%;
+            margin: 0 0 10px;
+        }
+        &__btn {
+            order: 4;
+            flex: 1;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 # landing-page-market  
 
-Live DEMO on [on GitHub Pages](https://ryuuto829.github.io/landing-page-market/).  
+Live DEMO on [on GitHub Pages]() will be soon.  
 
 ## About this project  
 

@@ -1,0 +1,46 @@
+// || MIXINS
+
+//  1. Add outline to element
+@mixin frame1 {
+    outline: 1px solid blue;
+  }
+@mixin frame2 {
+    outline: 1px solid red;
+}
+
+@mixin reset-form {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// || FUNCTIONS
+
+// || 1. recalc 10px = 1 em
+
+$browser-context: 16;
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+// || 2. recalc 10px = 1 rem
+
+@function rem($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+      $pixels: $pixels * 1px;
+    }
+  
+    @if (unitless($context)) {
+      $context: $context * 1px;
+    }
+  
+    @return $pixels / $context * 1rem;
+  }
