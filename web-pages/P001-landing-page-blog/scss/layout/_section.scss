@@ -11,7 +11,7 @@
         text-transform: uppercase;
         color: $color-title;
         margin: 0 0 24px 0;
-        padding: 0 15px;
+        
     
         &--purple {
             color: $color-main;
@@ -27,6 +27,10 @@
 @media (min-width: 768px) {
     .section {
         max-width: 690px;
+
+        &__title {
+            padding: 0 15px;
+        }
     }  
 }
 

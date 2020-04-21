@@ -1,8 +1,31 @@
 .article-group {
-    @include frame1;
+    display: flex;
+    flex-flow: row wrap;
+
+    &__item {
+        margin-bottom: 24px;
+        flex: 1 100%;
+    }
 
     &__post {
         display: flex;
+
+        &--big {
+            flex-flow: row wrap;
+        }
     }
 
+    &--big {
+        flex-flow: column wrap;
+    }
+}
+
+@media (min-width: 768px) {
+    .article-group {
+        padding: 0 15px;
+
+        &__item {
+            flex: 1 50%;
+        }
+    } 
 }

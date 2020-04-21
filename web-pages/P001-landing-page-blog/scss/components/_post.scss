@@ -12,6 +12,11 @@
             height: 150px; // delete
         }
 
+        &--big-img {
+            width: 100%; // delete
+            height: 150px; // delete
+        }
+
         &--main:hover {
             color: $color-main;
         }
@@ -38,9 +43,13 @@
     }  
     
     &__top-title {
-        font-size: rem(20px);
+        font-size: rem(17px);
         font-weight: 700;
         margin: 0;
+
+        &--main {
+            font-size: rem(20px);
+        }
     }
 
     &__meta {
@@ -69,11 +78,53 @@
 
     &__img {
         display: block;
-        background-color: red;
         height: 100%;
+        margin-right: 15px;
+        background-color: $bg-color-img;
+        color: rgba(255,255,255,0.8);
+        border-radius: 5px;
     }
 
     &__side {
         flex: 1 66%;
+        padding-right: 15px;
+
+        &--big {
+            width: 100%;
+            margin-top: 24px;
+        }
+    }
+
+    &--big {
+        flex-flow: column wrap;
+    }
+}
+
+@media (min-width: 768px) {
+    .post {  
+        &__link {    
+            
+            &--img {
+                max-width: 100px; //delete
+                height: 100px; // delete
+            }
+
+            &--big-img {
+                flex: 1;
+                height: 230px; // delete
+            }
+        }
+
+        &--big {
+            flex-flow: row wrap;
+        } 
+
+        &__side {
+            &--big {
+                flex: 1;
+                margin-top: 0;
+                padding: 0 15px;
+            }
+        }
     }
 }

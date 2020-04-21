@@ -57,7 +57,9 @@ let UIController = (function () {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
-        inputBtn: '.add__btn'
+        inputBtn: '.add__btn',
+        incomeContainer: '.budget-list--income',
+        expensesContainer: '.budget-list--expenses',
     };
 
     return {
@@ -69,18 +71,20 @@ let UIController = (function () {
             }
         },
         addListItem: function (obj, type) {
-            let html, newHtml;
+            let html, newHtml, element;
 
             if (type === 'inc') {
                 html = '<div class="budget-list__item" id="income-%id%"> <p class="budget-list__description">%description%</p> <p class="budget-list__value">%value%</p> <div class="close icon"></div> </div>';
+                element = DOMstrings.incomeContainer;
             } else if (type === 'exp') {
+                element = DOMstrings.expensesContainer;
                 html = '<div class="budget-list__item" id="expense-%id%"> <p class="budget-list__description">%description%</p> <div class="right"> <p class="budget-list__value budget-list__value--left">%value%</p> <div class="budget-list__percentage">50 %</div> <div class="close icon"></div> </div> </div>';
             }
 
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
             newHtml = newHtml.replace('%value%', obj.value);
-            document.querySelector('.budget-list--income').insertAdjacentHTML('beforeend', newHtml);
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         },
         getDOMstrings: function () {
