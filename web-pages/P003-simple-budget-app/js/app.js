@@ -5,6 +5,19 @@ let budgetController = (function () {
         this.id = id;
         this.description = description;
         this.value = value;
+        this.percentage = -1;
+    };
+
+    Expense.prototype.calculatePercentage = function(totalIncome) {
+        if (totalIncome > 0) {
+            this.percentage = Math.round((this.value / totalIncome) * 100);
+        } else {
+            this.percentage = -1;
+        }
+    };
+
+    Expense.prototype.getPercentage = function () {
+        return this.percentage;
     };
 
     let Income = function (id, description, value) {
@@ -55,6 +68,20 @@ let budgetController = (function () {
             return newItem;
         },
 
+        deleteItem: function(type, id) {
+            let ids, index;
+
+            ids = data.allItems[type].map( function(current) {
+                return current.id;
+            });
+
+            index = ids.indexOf(id);
+
+            if (index !== -1) {
+                data.allItems[type].splice(index, 1);
+            }
+        },
+
         calculateBudget: function () {
             calculateTotal('exp');
             calculateTotal('inc');
@@ -66,6 +93,19 @@ let budgetController = (function () {
             } else {
                 data.percetage = -1;
             }
+        },
+
+        calculatePercentages: function () {
+            data.allItems.exp.forEach(function(cur) {
+                cur.calculatePercentage(data.totals.inc);
+            });
+        },
+
+        getPercentages: function () {
+            let allPerc = data.allItems.exp.map(function(cur) {
+                return cur.getPercentage();
+            });
+            return allPerc;
         },
 
         getBudget: function () {
@@ -97,7 +137,9 @@ let UIController = (function () {
         budgetLabel: '.budget__value--general',
         incomeLabel: '.budget__value--inc',
         expenseLabel: '.budget__value--exp',
-        percetageLable: '.budget__percentage--main'
+        percetageLable: '.budget__percentage--main',
+        container: '.container',
+        expensesPercLabel: '.budget-list__percentage'
     };
 
     return {
@@ -113,11 +155,11 @@ let UIController = (function () {
 
             if (type === 'inc') {
                 element = DOMstrings.incomeContainer;
-                html = '<div class="budget-list__item" id="income-%id%"> <p class="budget-list__description">%description%</p> <p class="budget-list__value">%value%</p> <div class="close icon"></div> </div>';
+                html = '<div class="budget-list__item" id="inc-%id%"> <p class="budget-list__description">%description%</p> <div class="right"><p class="budget-list__value">%value%</p> <div class="btn"><div class="close icon"></div> </div> </div> </div>';
                 element = DOMstrings.incomeContainer;
             } else if (type === 'exp') {
                 element = DOMstrings.expenseContainer;
-                html = '<div class="budget-list__item" id="expense-%id%"> <p class="budget-list__description">%description%</p> <div class="right"> <p class="budget-list__value budget-list__value--left">%value%</p> <div class="budget-list__percentage">50 %</div> <div class="close icon"></div> </div> </div>';
+                html = '<div class="budget-list__item" id="exp-%id%"> <p class="budget-list__description">%description%</p> <div class="right"> <p class="budget-list__value budget-list__value--left">%value%</p> <div class="budget-list__percentage">50 %</div> <div class="btn"><div class="close icon"></div> </div> </div> </div>';
             }
 
             newHtml = html.replace('%id%', obj.id);
@@ -125,6 +167,11 @@ let UIController = (function () {
             newHtml = newHtml.replace('%value%', obj.value);
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
+        },
+
+        deleteListItem: function(selectorID) {
+            let el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
         },
 
         clearFields: function () {
@@ -153,6 +200,25 @@ let UIController = (function () {
             }
         },
 
+        displayPercentages: function(percentages){
+            let fields = document.querySelectorAll(DOMstrings.expensesPercLabel);
+
+            let nodeListForEach = function(list, callback) {
+                for (let i = 0;  i < list.length; i++) {
+                    callback(list[i], i);
+                }
+            };
+
+            nodeListForEach(fields, function(current, index) {
+                if (percentages[index] > 0 ) {
+                    current.textContent = percentages[index] + '%';
+                } else {
+                    current.textContent = '---'
+                }
+                
+            });
+        },
+
         getDOMstrings: function () {
             return DOMstrings;
         }
@@ -171,6 +237,8 @@ let controller = (function (budgetCtrl, UICtrl) {
                 ctrlAddItem();
             }
         });
+
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     };
 
 
@@ -182,6 +250,14 @@ let controller = (function (budgetCtrl, UICtrl) {
 
         UICtrl.displayBudget(budget);
 
+    };
+
+    let updatePercentages = function () {
+        budgetCtrl.calculatePercentages();
+
+        let percentages = budgetCtrl.getPercentages();
+
+        UICtrl.displayPercentages(percentages);
     };
 
     let ctrlAddItem = function () {
@@ -198,7 +274,30 @@ let controller = (function (budgetCtrl, UICtrl) {
             UICtrl.clearFields();
 
             updateBudget();
+
+            updatePercentages();
         }
+    };
+
+    let ctrlDeleteItem = function (event) {
+        let itemID, splitID, type, ID;
+        itemID = event.target.parentNode.parentNode.parentNode.id;
+        console.log(itemID);
+
+        if (itemID) {
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = parseInt(splitID[1]);
+
+            budgetCtrl.deleteItem(type, ID);
+
+            UICtrl.deleteListItem(itemID);
+
+            updateBudget();
+
+            updatePercentages();
+        }
+
     };
 
     return {
