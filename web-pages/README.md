@@ -12,6 +12,6 @@ Will be added soon ...
 
 No | Project title | Technologies | Demos
 ---- | ---- | ---- | ----
-P003 | **Simple Budget App** | `JavaScript` `HTML5` `SCSS` |
+P003 | **Simple Budget App** | `JavaScript` `HTML5` `SCSS` `NPM Scripts` |
 P002 | **Landing page Market** | `HTML5` `SCSS` `Fontawesome 5` | 
 P001 | **Landing page Blog** | `HTML5` `SCSS` `Gulp` `npm` | 
