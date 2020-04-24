@@ -19,6 +19,7 @@
 
 No | Status | Project title | Demos
 ---- | ---- | ---- | ----
+P019 | | Simple Speed typing app on pure js |
 P018 | | **Quiz Game from js udemy course** |
 P017 | | **Dice Game from js udemy course** |
 P016 | | **Coding challenge from js udemy course "Tip calculator"** |   

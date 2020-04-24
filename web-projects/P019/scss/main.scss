@@ -18,7 +18,53 @@ body {
 }
 
 .window {
+    position: relative;
     background-color: white;
-    margin: 15px;
     padding: 15px;
+    font-size: rem(20px);
+    overflow-wrap: break-word;
+    letter-spacing: 2px;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 25px auto;
+
+    &__layer {
+        position: absolute;
+        display: inline;
+        top: 15px;
+        left: 15px;
+        color: rgba(255,255,255,.5);
+        z-index: 10;
+        line-height: 2rem;
+        overflow-wrap: break-word;
+        max-width: 570px;
+    }
+
+    &__text {
+        margin: 0;
+        z-index: 5;
+        line-height: 2rem;
+        overflow-wrap: break-word;
+    }
+
+    &__shadow-text {
+        display: inline;
+        color: rgba(255,255,255,.5);
+        z-index: 10;
+        line-height: 2rem;
+        overflow-wrap: break-word;
+        margin: 0;
+        position: relative;
+
+        &:after {
+            content: ' ';
+            position: absolute;
+            display: inline-block;
+            right: 0px;
+            width: 0px;
+            height: 100%;
+            border-right: 3px solid black;
+            z-index: 15;
+        }
+    }
 }
