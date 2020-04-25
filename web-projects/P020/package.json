@@ -1,0 +1,18 @@
+{
+  "name": "p020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "sass main.scss css/main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.26.5"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1"
+  }
+}
