@@ -19,6 +19,7 @@
 
 No | Status | Project title | Demos
 ---- | ---- | ---- | ----
+P020 | | **Data table on bootstrap and pure js** |
 P019 | | Simple Speed typing app on pure js |
 P018 | | **Quiz Game from js udemy course** |
 P017 | | **Dice Game from js udemy course** |
