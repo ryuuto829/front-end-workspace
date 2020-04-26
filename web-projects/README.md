@@ -19,7 +19,7 @@
 
 No | Status | Project title | Demos
 ---- | ---- | ---- | ----
-P020 | | **Data table on bootstrap and pure js** |
+P020 | `Codepen` | **Data table on bootstrap and pure js** | [check it.](https://codepen.io/ryuuto829/pen/mdemWPL)  
 P019 | | Simple Speed typing app on pure js |
 P018 | | **Quiz Game from js udemy course** |
 P017 | | **Dice Game from js udemy course** |

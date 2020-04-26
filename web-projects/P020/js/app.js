@@ -6,7 +6,6 @@ let main = function () {
         displayFrom: document.getElementById('from'),
         displayTo: document.getElementById('to'),
         displayEntries: document.getElementById('display-entries'),
-        nextButton: document.getElementById('next-btn'), // delete
         pageNum: document.querySelector('.pagination')
     };
 
@@ -100,7 +99,7 @@ let main = function () {
     let displayPageNav = function () {
         let item, formattedItem, btn;
 
-        btn = '<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>';
+        btn = '<li class="page-item" id="pre-btn"><a class="page-link" href="#">Previous</a></li>';
         DOMstrings.pageNum.insertAdjacentHTML('beforeend', btn);
         item = '<li class="page-item"><a class="page-link" href="#">%page%</a></li>';
 
@@ -122,11 +121,11 @@ let main = function () {
                 DOMstrings.pageNum.children[i].classList.add('active');
             } else {
                 DOMstrings.pageNum.children[i].classList.remove('active');
-            }    
+            }
         }
     };
 
-    // 8. remove old info
+    // 8. remove table content and nav bar
 
     let clearTabel = function () {
         DOMstrings.body.innerHTML = '';
@@ -136,49 +135,89 @@ let main = function () {
         DOMstrings.pageNum.innerHTML = '';
     };
 
-    // 3. update caption description
-    // 4. update pagining active page and numbers of pages
-    // 5. show html data with entries lines
-    // 6. after clicking on next page - load another set of data, then (3), (4)
-    // 7. after changing number of entries do (3), (4), (5) 
+    // 9. update UI and nav bar
+
+    let updateUI = function () {
+        displayCaption();
+        displayTableData();
+        showActivePage();
+    }
+
+    let updateNav = function () {
+        clearTabel();
+        calcTableRange();
+        updateUI();
+    };
+
+    // 10. update button in nav bar
+    
+    let updateButtons = function () {
+        if (tableControl.currentPage === 0) {
+            DOMstrings.pageNum.firstElementChild.classList.add('disabled'); 
+        } else {
+            DOMstrings.pageNum.firstElementChild.classList.remove('disabled'); 
+        }
+        if (tableControl.currentPage === tableControl.pages - 1) {
+            DOMstrings.pageNum.lastElementChild.classList.add('disabled');
+        } else {
+            DOMstrings.pageNum.lastElementChild.classList.remove('disabled');
+        }
+    };
+
+    // 11. setup events: change the numbers of entries and change the page number
 
     let setupEventListeners = function () {
         DOMstrings.entries.addEventListener('change', function () {
+            tableControl.currentPage = 0;
             clearTabel();
             clearNav();
             getEntriesNumer();
+            calcPages();
             calcTableRange();
-            calcPages(); // = 15
-            displayCaption();
-            displayTableData();
             displayPageNav();
-            showActivePage();
+            updateUI();
+            updateButtons();
         });
 
-        DOMstrings.pageNum.addEventListener('click', function(event){
-            tableControl.currentPage = parseInt(event.target.textContent) - 1;
-            clearTabel();
-            calcTableRange();
-            displayCaption();
-            displayTableData();
-            showActivePage();
+        DOMstrings.pageNum.addEventListener('click', function (event) {
+
+            if (event.target.textContent === 'Previous') {
+
+                if (tableControl.currentPage !== 0) {
+                    tableControl.currentPage = tableControl.currentPage - 1;
+                    updateNav();
+                    updateButtons();
+                }  
+
+            } else if (event.target.textContent === 'Next') {
+
+                if (tableControl.currentPage !== tableControl.pages - 1) {
+                    tableControl.currentPage = tableControl.currentPage + 1;
+                    updateNav();
+                    updateButtons();
+                }
+
+            } else {
+                tableControl.currentPage = parseInt(event.target.textContent) - 1;
+                updateNav();
+                updateButtons();
+            }
         });
     };
 
     return {
         init: function () {
             generateTableData(60);
-            calcPages(); // = 15
-            displayCaption();
-            displayTableData();
+            calcPages();
             displayPageNav();
-            showActivePage();
+            updateUI();
+            updateButtons();
 
             setupEventListeners();
         },
 
         test: function () {
-            console.log(displayTableData.lol);
+            console.log(tableControl.currentPage);
         }
     };
 }();
