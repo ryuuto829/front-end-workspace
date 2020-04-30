@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "fractional": "^1.0.0"
   }
 }
