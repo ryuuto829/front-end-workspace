@@ -1,4 +1,5 @@
-/** Take CSS from .css folder and place it in a style tag in HTML */
-import './css/index.css';
+/** Add all styles */
+import './scss/main.scss';
 
-console.log('My application is working fine.');
+/** Add all scripts */
+import './js/main.js';
