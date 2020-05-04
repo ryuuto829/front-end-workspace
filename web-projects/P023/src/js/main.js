@@ -1,94 +1,85 @@
 import AuthorWiki from './models/SearchWiki';
+import { DOMstrings } from './views/base';
+import * as searchWikiView from './views/searchWikiView';
 
-/** APP STATE */
+searchWikiView.clearPopover(); // change
+
+
+/**
+ *  APP STATE
+ */
 const state = {
   wikiAuthors: new Map(),
   delayHover: 0,
 };
 
+/**
+ *  HOVER OVER THE AUTHOR NAME
+ */
+DOMstrings.authorTable.addEventListener('mouseover', e => {
 
+  if (e.target.classList.contains('author__name')) {
+    searchWikiView.clearPopover();
+    // 1. Add delay to the hover
+    state.delayHover = setTimeout(setData, 1000);
+  };
 
-const renderPopover = (author) => {
-  let test = state.wikiAuthors.get(author);
-  
-
-  document.querySelector('.popover__author').textContent = `${author}`;
-  document.querySelector('.popover__short').textContent = `${test.short}`;
-  document.querySelector('.popover__about').textContent = `${test.about}`;
-  document.querySelector('.popover__img').src = `${test.img}`;
-  document.querySelector('.popover__img').alt = `${test.author} - ${test.short}`;
-  document.querySelector('.popover__url').href = `${test.url}`;
-
-
-  document.querySelector('.popover__loader').style.display = "none";
-  document.querySelector('.popover__content').style.display = "block";
-};
-
-
-/** HOVER OVER THE AUTHOR NAME */
-document.querySelector('.author').addEventListener('mouseover', e => {
-
-  // 1. Move popover box
-  let test = e.target.getBoundingClientRect();
-  let right = test.right;
-  let top = test.top;
-  document.querySelector('.popover').style.left = `${right}px`;
-  document.querySelector('.popover').style.top = `${top}px`;
-
-
-  // 1. Add delay to the hover
-  state.delayHover = setTimeout(setData, 1000);
-
+  // 2. Retrieve data and update UI
   async function setData() {
-    //e.target.insertAdjacentHTML('afterend', box);
-
-
-
-
     const authorName = e.target.textContent;
-    console.log(authorName); // delete
 
-    // 1. Test if author name was already requested fro, wiki
-    if (state.wikiAuthors.has(authorName)) {
-      console.log(state.wikiAuthors); // delete
+    // 1. Move popover box
+    searchWikiView.movePopover(e.target.getBoundingClientRect());
 
-      // 1. Display box in UI
-
-
-    } else {
-
-      // 1. Fetch data
+    // 2. Test if author name was already requested fro, wiki
+    if (!state.wikiAuthors.has(authorName)) {
       const newAuthor = new AuthorWiki(authorName);
 
+      // Fetch data
       try {
+        DOMstrings.popover.style.display = "block";
+        DOMstrings.loader.style.display = "block";
+        DOMstrings.content.style.display = "none";
+        // 1. Create wiki obj
         await newAuthor.getAboutText();
         await newAuthor.getAuthorInfo();
         state.wikiAuthors.set(newAuthor.author, newAuthor.description);
-        console.log(state.wikiAuthors); // delete
 
-        renderPopover(authorName);
-        
+        // 2. Render UI
+        searchWikiView.renderPopover(authorName, state.wikiAuthors.get(authorName));
+
       } catch (error) {
-        alert(error);
+        DOMstrings.loader.textContent = "Not found ..";
       }
-
-      // 2. Display box in UI
-
+    } else {
+      searchWikiView.renderPopover(authorName, state.wikiAuthors.get(authorName));
     }
   };
 
 });
 
-
-/** LEAVE AUTHOR NAME */
-document.querySelector('.author').addEventListener('mouseout', e => {
-
+/**
+ *  LEAVE AUTHOR NAME 
+ */
+DOMstrings.authorTable.addEventListener('mouseout', e => {
   // 1. Reset hover dalay
-  clearTimeout(state.delayHover);
+  clearTimeout(state.delayHover);  
+});
 
-  //e.target.innerHTML = 'Dan Brown';
+DOMstrings.popover.addEventListener('mouseleave', e => {
+  // 1. Clear popover
+  searchWikiView.clearPopover();
+});
 
-  // 2. Remove box from UI
+DOMstrings.btn.addEventListener('click', () => {
 
-
+  if (DOMstrings.inAuthor.value && DOMstrings.inBook.value) {
+    const html = `
+    <tr class="author__line">
+      <td class="author__name">${DOMstrings.inAuthor.value}</td>
+      <td class="author__book">${DOMstrings.inBook.value}</td>
+    </tr>
+    `;
+    DOMstrings.authorTable.insertAdjacentHTML('beforeend', html);
+  }
 });

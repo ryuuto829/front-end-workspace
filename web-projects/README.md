@@ -19,6 +19,7 @@
 
 No | Status | Project title | Demos
 ---- | ---- | ---- | ----
+P023 | | **Book list using WIKI API** | 
 P022 | | Simple filter search |
 P021 | | **Coding challenge from js udemy course using ES6** |
 P020 | `Codepen` | **Data table on bootstrap and pure js** | [check it.](https://codepen.io/ryuuto829/pen/mdemWPL)  

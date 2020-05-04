@@ -1,0 +1,15 @@
+export const DOMstrings = {
+  authorTable: document.querySelector('.author'),
+  authorName: document.querySelector('.author__name'),
+  author: document.querySelector('.popover__author'),
+  short: document.querySelector('.popover__short'),
+  about: document.querySelector('.popover__about'),
+  img: document.querySelector('.popover__img'),
+  url:document.querySelector('.popover__url'),
+  loader: document.querySelector('.popover__loader'),
+  content: document.querySelector('.popover__content'),
+  popover: document.querySelector('.popover'),
+  btn: document.querySelector('.input__btn'),
+  inAuthor: document.querySelector('.input__author'),
+  inBook: document.querySelector('.input__book'),
+};
