@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple ToDo List</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="container border">
+
+      <!-- HEADER -->
+        <h1 class="display-4">Simple ToDo List</h1>
+        <p class="lead">Using Bootstrap 4 & Pure JS</p>
+
+        <!-- INPUTS -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Add Priority</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">🔥 First priority]</a>
+              <a class="dropdown-item" href="#">💢 Second priority</a>
+            </div>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with dropdown button">
+          <div class="input-group-append">
+            <button class="btn btn-info" type="button">Add Task</button>
+          </div>
+        </div>
+
+      <!-- TASKS LIST -->
+
+
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+
+
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <div class="d-flex w-100 justify-content-between">
+              <label class="custom-control-label" for="customCheck1">Learn javasctipt <span class="badge badge-primary">🔥 Very Hot</span></label>
+              <small>3 days ago</small>
+            </div>
+          </div>
+
+
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <small class="text-muted">Donec id elit non mi porta.</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+            <small class="text-muted">3 days ago</small>
+          </div>
+          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <small class="text-muted">Donec id elit non mi porta.</small>
+        </a>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1"><span class="badge badge-primary">🔥 Very Hot</span> Learn javasctipt</label>
+      </div>
+
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1"><span class="badge badge-primary">💢 Hot</span> Learn javasctipt</label>
+      </div>
+
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Learn javasctipt</label>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
