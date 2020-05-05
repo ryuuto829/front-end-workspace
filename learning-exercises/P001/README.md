@@ -1,6 +1,10 @@
 # Eloquent JavaScript
 
 ### List of Exercises:  
+E018 - Borrowing a method  
+E017 - Iterable groups  
+E016 - Groups  
+E015 - A vector type  
 E014 - Dominant writing direction  
 E013 - Everything  
 E012 - Your own loop  
