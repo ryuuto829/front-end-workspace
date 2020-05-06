@@ -19,6 +19,7 @@
 
 No | Status | Project title | Demos
 ---- | ---- | ---- | ----
+P024 | `Codepen` | **Simple ToDo List using Bootstrap 4 &Pure JS** | [check it.](https://codepen.io/ryuuto829/pen/dyYdNYz)  
 P023 | | **Book list using WIKI API** | 
 P022 | | Simple filter search |
 P021 | | **Coding challenge from js udemy course using ES6** |
