@@ -6,95 +6,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple ToDo List</title>
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <style>
+    .focus-success:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 0 0.2rem rgba(72,180,97,.5);
+    }
+    .focus-danger:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.2rem rgba(225,83,97,.5);
+    }
+    .focus-warning:focus {
+      border-color: #ffc107;
+      box-shadow: 0 0 0 0.2rem rgba(222,170,12,.5);
+    }
+
+    .close-btn {
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .list-group-item:hover .close-btn {
+      position: initial;
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-dark">
 
   <div class="container">
-    <div class="container border">
+    <div class="container border rounded my-4 bg-light py-4">
 
       <!-- HEADER -->
-        <h1 class="display-4">Simple ToDo List</h1>
-        <p class="lead">Using Bootstrap 4 & Pure JS</p>
+      <h1 class="display-4 text-center text-muted">Simple ToDo List</h1>
+      <p class="lead text-center text-success">Using Bootstrap 4 & Pure JS</p>
 
-        <!-- INPUTS -->
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Add Priority</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">🔥 First priority]</a>
-              <a class="dropdown-item" href="#">💢 Second priority</a>
-            </div>
+      <!-- INPUTS -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend input-group-warning">
+          <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" id="priority">Add Priority</button>
+          <div class="dropdown-menu" id="dropdown">
+            <p class="dropdown-item mb-0 btn-danger" data-prior="1">🔥 First priority</p>
+            <p class="dropdown-item mb-0 btn-warning" data-prior="2">🔥 Second priority</p>
+            <div class="dropdown-divider"></div>
+            <p class="dropdown-item mb-0 btn-success" data-prior="0">Reset</p>
           </div>
-          <input type="text" class="form-control" aria-label="Text input with dropdown button">
-          <div class="input-group-append">
-            <button class="btn btn-info" type="button">Add Task</button>
+        </div>
+        <input type="text" class="form-control border-success focus-success" aria-label="Text input with dropdown button"
+          placeholder="Type your task here .." id="input">
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" id="add-btn">Add Task</button>
+        </div>
+      </div>
+
+      <!-- TASKS LIST -->
+      <div class="list-group">
+
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="custom-control custom-checkbox">
+            <div class="d-flex w-100 justify-content-between">
+              <input type="checkbox" class="custom-control-input" id="check-171ea75bdc7">
+              <label class="custom-control-label" for="check-171ea75bdc7">Learn javasctipt <span
+                  class="badge badge-danger ml-2">🔥 Very Hot</span></label>
+              <div class="float-left">
+                <small>2 days ago</small>
+                <div class="d-inline">
+                  <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true" class="pl-2 close-btn">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-      <!-- TASKS LIST -->
-
-
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-
-
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
             <div class="d-flex w-100 justify-content-between">
-              <label class="custom-control-label" for="customCheck1">Learn javasctipt <span class="badge badge-primary">🔥 Very Hot</span></label>
-              <small>3 days ago</small>
+              <input type="checkbox" class="custom-control-input" id="check-171ea764490">
+              <label class="custom-control-label" for="check-171ea764490">Read a book<span
+                  class="badge badge-warning ml-2">🔥 Hot</span></label>
+              <div class="float-left">
+                <small>3 days ago</small>
+                <div class="d-inline">
+                  <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true" class="pl-2 close-btn">&times;</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-
-        </a>
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="custom-control custom-checkbox">
+            <div class="d-flex w-100 justify-content-between">
+              <input type="checkbox" class="custom-control-input" id="check-171ea764491">
+              <label class="custom-control-label" for="check-171ea764491">Drink water<span
+                  class="badge badge-warning ml-2"></span></label>
+              <div class="float-left">
+                <small>3 days ago</small>
+                <div class="d-inline">
+                  <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true" class="pl-2 close-btn">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-          <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-          <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
+        </div>
+
       </div>
+      <!-- END OF TASK LIST -->
 
-
-
-
-
-
-
-
-
-
-
-
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1"><span class="badge badge-primary">🔥 Very Hot</span> Learn javasctipt</label>
-      </div>
-
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1"><span class="badge badge-primary">💢 Hot</span> Learn javasctipt</label>
-      </div>
-
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1">Learn javasctipt</label>
-      </div>
     </div>
-
+  </div>
   </div>
 
   <script src="main.js"></script>
