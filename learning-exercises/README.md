@@ -12,4 +12,5 @@ Will be added soon ...
 
 No | Project title | Learning Technologies |
 ---- | ---- | ---- 
+P002 | **Problems from book "Learning JavaScript Data Structures and Algorithms"** | `JavaScript`  
 P001 | **Exercises from book "Eloquent JavaScript"** | `JavaScript` 
