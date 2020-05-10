@@ -21,22 +21,43 @@ function equalStacks(...cylinders) {
     num++;
   }
 
-  let item = stacks[0].pop();
+  while (stacks[0].length) {
+    if (stacks[1].length === 0 || stacks[2].length === 0) {
+      return 0;
+    }
+    
+    const same = [
+      stacks[0][stacks[0].length - 1],
+      stacks[1][stacks[1].length - 1],
+      stacks[2][stacks[2].length - 1]
+    ]
 
-  while (item) {
-    const same1 = stacks[1][stacks[1].length - 1];
-    const same2 = stacks[2][stacks[2].length - 1];
-    // do smthing
+    if (same[0] > same[1]) {
+      stacks[0].pop();
+      continue;
+    } else if (same[0] < same[1]) {
+      stacks[1].pop();
+      continue;
+    } else {
+      if (same[0] > same[2]) {
+        stacks[0].pop();
+        continue;
+      } else if (same[0] < same[2]) {
+        stacks[2].pop();
+        continue;
+      } else {
+        return same[0];
+      }
+    }
   }
-
-  // return 0;
+  
+  return 0;
 }
-const test = equalStacks([1, 1, 1, 1, 2], [3, 7], [1, 3, 1]);
-//console.log(test);
 
+const test = equalStacks([3, 2, 1, 1, 1], [4, 3, 2], [1, 1, 4, 1]);
+console.log(test);
 
-
-/** SLOW */
+/** SLOW Version */
 
 // function equalStacks(h1, h2, h3) {
 
@@ -67,10 +88,10 @@ const test = equalStacks([1, 1, 1, 1, 2], [3, 7], [1, 3, 1]);
 //   let item = stacks[0].pop();
 
 //   while (item) {
-//     const same1 = stacks[1].some(el => el === item);
+//     const same = stacks[1].some(el => el === item);
 //     const same2 = stacks[2].some(el => el === item);
 
-//     if (same1 && same2) {
+//     if (same && same2) {
 //       return item;
 //     } else {
 //       item = stacks[0].pop();
@@ -79,5 +100,3 @@ const test = equalStacks([1, 1, 1, 1, 2], [3, 7], [1, 3, 1]);
 
 //   return 0;
 // }
-// const test = equalStacks([1, 1, 1, 1, 2], [3, 7], [1, 3, 1]);
-// console.log(test);

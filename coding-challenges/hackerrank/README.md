@@ -13,7 +13,8 @@ Will be added soon ...
  
 No | Problem title | Score |
 ---- | ---- | ----
+P036 | **Double-base palindromes** | 100
 P235 | An Arithmetic Geometric sequence | 0
 P006 | **Sum square difference** | 100
 P002 | **Even Fibonacci numbers** | 100
-P001 | **Multiples of 3 and 5** | 60
+P001 | Multiples of 3 and 5 | 60
