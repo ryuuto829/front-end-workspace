@@ -1,46 +1,66 @@
-import React, { useState } from 'react';
-import './App.css';
-import Person from './Person/Person';
+import React from 'react';
 
-const App = props => {
-  const [personState, setPersonState] = useState({
-    persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Manu', age: 29 },
-      { name: 'Dima', age: 22 }
-    ]
-  });
-
-  const switchNameHandler = () => {
-    console.log('clicked');
-
-    setPersonState({
-      persons: [
-        { name: 'Dmytro', age: 22 },
-        { name: 'Dan', age: 30 },
-        { name: 'Anna', age: 26 }
-      ]
-    });
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+    };
   }
 
-  return (
-    <div className="App">
-      <h1>Hello people!</h1>
-      <p>Some text here ...</p>
-      <button onClick={switchNameHandler}>Switch the name</button>
-      <Person
-        name={personState.persons[0].name}
-        age={personState.persons[0].age}
-        click={switchNameHandler}>
-        I the only real one here!</Person>
-      <Person
-        name={personState.persons[1].name}
-        age={personState.persons[1].age} />
-      <Person
-        name={personState.persons[2].name}
-        age={personState.persons[2].age} />
-    </div>
-  );
-}
+  generateID = () => {
+    return `${+(new Date()) + Math.random()}`;
+  };
 
-export default App;
+  test = e => {
+    this.setState({
+      text: e.target.value
+    });
+  };
+
+  click = () => {
+    this.setState({
+      text: 'delete'
+    })
+  };
+
+  render() {
+    let text = null;
+    let len = 'short';
+    const textLen = this.state.text.length;
+
+    if (textLen) {
+      text = <div className="styled-text">{this.state.text}</div>
+
+      if (textLen < 5) {
+        len = 'short';
+      } else {
+        len = 'long';
+      }
+    }
+
+    const list = Array.from(this.state.text);
+
+    const listItems = list.map(el => {
+      let value = el;
+
+      if (el === ' ') {
+        value = '_'
+      }
+      return <span className="char" key={this.generateID()}>{value}</span>
+    });
+
+    return (
+      <div className="container">
+        <h1>Small app using React</h1>
+        <p>Type some text in the input field below:</p>
+        <input type="text" className="input" onChange={this.test} value={this.state.text} />
+        <span>Text is too {len}</span>
+        {text}
+        <div onClick={this.click}>
+          {listItems}
+        </div>
+      </div>
+    )
+  }
+}
