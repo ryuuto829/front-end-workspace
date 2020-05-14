@@ -1,0 +1,28 @@
+.iconButton {
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  overflow: visible;
+  outline: none;
+  transition: background-color .15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.iconButton:hover{
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.iconButton:active {
+  background-color: rgba(0, 0, 0, 0.24);
+}
+
+.editLogo {
+  display: block;
+  font-size: 1.25rem;
+  fill: rgba(0, 0, 0, 0.54);
+  width: 1em;
+  height: 1em;
+  user-select: none;
+}
