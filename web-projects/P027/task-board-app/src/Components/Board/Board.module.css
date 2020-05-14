@@ -9,23 +9,36 @@
   height: 100%;
 }
 
-.btn {
-  cursor: pointer;
-  display: inline-block;
-  min-height: 1em;
-  outline: 0;
-  border: none;
-  line-height: 1em;
-  padding: .5rem 1.5rem .5rem;
-  background: transparent none;
-  color: rgba(0, 0, 0, .6);
-  font-weight: 400;
-  border-radius: .3rem;
-  text-transform: none;
-  text-shadow: none;
-  box-shadow: 0 0 0 1px rgba(34, 36, 38, .15) inset;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.btn:hover {
+.title {
+  display: inline-block;
+  margin: 0;
+  line-height: 45px;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.input {
+  width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  background: #fff;
+  outline: none;
+  border: 1px solid rgba(34, 36, 38, .15);
+  color: rgba(0, 0, 0, .87);
+  border-radius: .3rem;
+  box-shadow: none;
+  
+  font-size: 1rem;
+}
+
+.input:focus {
+  border-color: #85b7d9;
   color: rgba(0, 0, 0, .8);
 }

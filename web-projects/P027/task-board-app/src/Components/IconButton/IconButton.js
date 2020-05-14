@@ -3,7 +3,6 @@ import styles from './IconButton.module.css';
 
 class IconButton extends React.Component {
   render() {
-
     return (
       <button className={styles.iconButton}>
         <svg
