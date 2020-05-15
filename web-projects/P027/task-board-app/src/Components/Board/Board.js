@@ -10,8 +10,8 @@ class Board extends React.Component {
       titleName: 'Currently doing!',
       isEditable: false,
       isHovering: false,
-      titleLength: 25
     };
+    this.titleLength = 25;
   }
 
   closeInput(e) {
@@ -72,7 +72,7 @@ class Board extends React.Component {
         onChange={this.inputHandler}
         onKeyDown={this.inputSubmitHandler}
         onBlur={this.inputBlurHandler}
-        maxLength={this.state.titleLength} />
+        maxLength={this.titleLength} />
     } else {
       headerTitle = <h2 className={styles.title}>{this.state.saveTitle}</h2>
     }
@@ -80,7 +80,7 @@ class Board extends React.Component {
     if (this.state.isHovering && !this.state.isEditable) {
       iconBtn = (
         <div onClick={this.iconClickHandler}>
-          <IconButton />
+          <IconButton name="edit" />
         </div>
       );
     }
@@ -94,6 +94,13 @@ class Board extends React.Component {
           {headerTitle}
           {iconBtn}
         </header>
+        <div className={styles.task}>
+          <div className={styles.taskHeader}>
+            <span className={styles.taskTitle}>Learn JavaScript</span>
+            <IconButton name="menu" />
+          </div>
+          <p className={styles.taskContent}>Watch some youtube tutorials</p>
+        </div>
       </div>
     )
   }
