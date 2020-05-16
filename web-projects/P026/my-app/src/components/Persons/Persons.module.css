@@ -1,0 +1,17 @@
+.toggleBtn {
+  font-size: 1rem;
+  font-weight: bolder;
+  color: black;
+  width: 100%;
+  display: block;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.toggleBtn_active {
+  color: green;
+}
+
+.toggleBtn_hidden {
+  color: red;
+}

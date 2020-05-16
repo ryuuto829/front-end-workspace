@@ -1,0 +1,18 @@
+.item {
+  border: 1px solid #eee;
+  padding: 5px;
+}
+
+.item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.itemName {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.itemInfo {
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
