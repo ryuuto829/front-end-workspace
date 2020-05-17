@@ -10,7 +10,7 @@ class BurgerIngredient extends React.Component {
 
     switch (this.props.type) {
       case ('bread-bottom'):
-        ingredient = <div className={styles.BreadButtom}></div>
+        ingredient = <div className={styles.BreadBottom}></div>
         break;
       case ('bread-top'):
         ingredient = (
@@ -35,7 +35,6 @@ class BurgerIngredient extends React.Component {
       default:
         ingredient = null;
     }
-    console.log(ingredient);
     return ingredient;
   }
 };
