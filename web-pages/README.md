@@ -12,6 +12,7 @@ Will be added soon ...
 
 No | Project title | Technologies | Demos
 ---- | ---- | ---- | ----
+P005 | **Burger App** | `React` `CSS modules` |
 P004 | **Recipes App** | `JavaScript` `HTML5` `SCSS` `NPM Scripts` `Webpack` `Babel` `API` |
 P003 | **Simple Budget App** | `JavaScript` `HTML5` `SCSS` `NPM Scripts` |
 P002 | **Landing page Market** | `HTML5` `SCSS` `Fontawesome 5` | 
