@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
-import Board from './Components/Board/Board';
+
+import Window from './components/Window/Window';
 
 function App() {
   return (
-    <div className="App">
-      <Board />
+    <div>
+      <Window />
     </div>
   );
 }

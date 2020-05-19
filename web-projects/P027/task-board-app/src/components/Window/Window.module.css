@@ -1,0 +1,19 @@
+.wrap {
+  padding: 20px;
+  display: flex;
+  height: 400px;
+}
+
+.raw {
+  background-color: transparent;
+  color: transparent;
+  flex: 1;
+  width: 100%;
+  z-index: 100;
+}
+
+.formatted {
+  flex: 1;
+  background-color: #ccc;
+  position: absolute;
+}
