@@ -15,7 +15,7 @@ function App() {
 
   return (
     <Layout>
-      {app2}
+      {app1}
     </Layout>
   );
 }
