@@ -11,6 +11,8 @@
 # production
 /build
 /public
+/src/assets/scales
+/src/assets/*.json
 
 # misc
 .DS_Store
