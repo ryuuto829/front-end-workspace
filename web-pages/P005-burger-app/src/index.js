@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 //import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
+import { BrowserRouter } from 'react-router-dom';
+
+const app = (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
 
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
@@ -27,7 +34,7 @@ axios.interceptors.response.use(response => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {app}
   </React.StrictMode>,
   document.getElementById('root')
 );
