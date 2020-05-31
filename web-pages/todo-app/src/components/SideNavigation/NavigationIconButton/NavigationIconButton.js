@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import NavigationIcons from '../NavigationIcons/NavigationIcons';
 
 const ButtonWrapper = styled.button`
@@ -69,18 +70,24 @@ const ButtonDefault = styled(ButtonWrapper)`
   }
 `;
 
-const NavigationIconButton = props => {
+const navigationIconButton = props => {
   let button;
 
   if (props.active) {
     button = (
-      <ButtonActive>
+      <ButtonActive
+        onMouseLeave={props.mouseLeave}
+        onMouseEnter={(e) => props.mouseOver(e, props.iconType)}
+        onClick={() => props.clicked(props.iconType)}>
         <NavigationIcons iconType={props.iconType} />
       </ButtonActive>
     );
   } else {
     button = (
-      <ButtonDefault>
+      <ButtonDefault
+        onMouseLeave={props.mouseLeave}
+        onMouseEnter={(e) => props.mouseOver(e, props.iconType)}
+        onClick={() => props.clicked(props.iconType)}>
         <NavigationIcons iconType={props.iconType} />
       </ButtonDefault>
     );
@@ -93,4 +100,11 @@ const NavigationIconButton = props => {
   );
 };
 
-export default NavigationIconButton;
+export default navigationIconButton;
+
+navigationIconButton.propTypes = {
+  clicked: PropTypes.func,
+  iconType: PropTypes.string,
+  active: PropTypes.bool,
+  name: PropTypes.string
+};
