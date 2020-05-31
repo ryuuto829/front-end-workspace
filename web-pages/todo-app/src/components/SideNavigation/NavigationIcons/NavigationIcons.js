@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const BUTTON_TYPES = {
   add: "add",
-  home: "home",
+  today: "today",
   settings: "settings"
 }
 
 const Icon = styled.svg`
-  fill: rgba(255, 255, 255, 0.7);
+  fill: inherit;
 `;
 
 const navigationIcons = props => {
@@ -22,7 +22,7 @@ const navigationIcons = props => {
         </Icon>
       );
       break;
-    case (BUTTON_TYPES.home):
+    case (BUTTON_TYPES.today):
       iconImage = (
         <Icon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M0 0h24v24H0V0z" fill="none" /><path d="M3 18h12v-2H3v2zM3 6v2h18V6H3zm0 7h18v-2H3v2z" />
