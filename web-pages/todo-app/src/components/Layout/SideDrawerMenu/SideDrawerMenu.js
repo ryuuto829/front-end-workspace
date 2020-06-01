@@ -10,25 +10,26 @@ const SideDrawerWrapper = styled.div`
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 73px;
+  left: -373px;
 `;
 
 const SideDrawerWrapperDisapear = styled(SideDrawerWrapper)`
   animation: .3s ease-out 0s 1 disapear;
-  transform: translateX(-100%);
+  left: -373px;
   
   @keyframes disapear{
     0% {
-      transform: translateX(0);
+      transform: translateX(100%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(0%);
     }    
   }
 `;
 
 const SideDrawerWrapperShow = styled(SideDrawerWrapper)`
   animation: .3s ease-out 0s 1 slideInFromLeft;
+  left: 73px;
 
   @keyframes slideInFromLeft {
     0% {

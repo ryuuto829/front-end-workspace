@@ -55,6 +55,10 @@ class SideNavigation extends React.Component {
     this.setState({ showTooltip: null });
   }
 
+  closeSideDrawerHandler = () => {
+    this.setState({ showSideDrawer: false });
+  }
+
   render() {
     const buttonsList = [];
     let tooltip = null;
@@ -68,6 +72,8 @@ class SideNavigation extends React.Component {
         key={this.state.buttons[button].id}
         active={this.state.active === button}>
         <NavigationIconButton
+          light
+          addTooltip="true"
           iconType={this.state.buttons[button].id}
           name={this.state.buttons[button].title}
           active={this.state.active === button}
@@ -93,7 +99,9 @@ class SideNavigation extends React.Component {
           {buttons}
         </SideNavigationWrapper>
         {tooltip}
-        <SideDrawer showed={this.state.showSideDrawer} />
+        <SideDrawer
+          showed={this.state.showSideDrawer}
+          closeDrawer={this.closeSideDrawerHandler} />
       </React.Fragment>
     );
   }

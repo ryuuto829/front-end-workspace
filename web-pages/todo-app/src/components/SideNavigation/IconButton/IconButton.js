@@ -13,7 +13,11 @@ const ButtonWrapper = styled.button`
   border-radius: 50%;
   transition: border-radius .3s;
   outline: none;
-  background-color: #424242;
+  background-color: ${props => {
+    if (props.light) return "#424242";
+    if (props.dark) return "white";
+    return "#424242";
+  }};
   color: rgba(255, 255, 255, 0.7);
   font-family: inherit;
   font-weight: 300;
@@ -21,55 +25,38 @@ const ButtonWrapper = styled.button`
   padding: 12px;
   width: 48px;
   box-sizing: border-box;
+  fill: ${props => {
+    if (props.active) {
+      if (props.light) return "#90caf9";
+      if (props.dark) return "#49aeff";
+      return "#90caf9";
+    } else {
+      if (props.light) return "rgba(255, 255, 255, 0.7)";
+      if (props.dark) return "#333";
+      return "rgba(255, 255, 255, 0.7)";
+    }
+  }};
+  border-radius: ${props => props.active ? "30%" : "50%"};
 
   &:hover {
     cursor: pointer;
-  }
-`;
-
-const ButtonActive = styled(ButtonWrapper)`
-  fill: #90caf9;
-  border-radius: 30%;
-`;
-
-const ButtonDefault = styled(ButtonWrapper)`
-  fill: rgba(255, 255, 255, 0.7);
-
-  &:hover{
-    fill: #90caf9;
+    fill: ${props => {
+    if (props.light) return "#90caf9";
+    if (props.dark) return "#49aeff";
+    return "#90caf9";
+  }};
     border-radius: 30%;
   }
 `;
 
-const navigationIconButton = props => {
-  let button;
-
-  if (props.active) {
-    button = (
-      <ButtonActive
-        onMouseLeave={props.mouseLeave}
-        onMouseEnter={(e) => props.mouseOver(e, props.iconType)}
-        onClick={() => props.clicked(props.iconType)}>
-        <NavigationIcons iconType={props.iconType} />
-      </ButtonActive>
-    );
-  } else {
-    button = (
-      <ButtonDefault
-        onMouseLeave={props.mouseLeave}
-        onMouseEnter={(e) => props.mouseOver(e, props.iconType)}
-        onClick={() => props.clicked(props.iconType)}>
-        <NavigationIcons iconType={props.iconType} />
-      </ButtonDefault>
-    );
-  }
-
-  return (
-    <React.Fragment>
-      {button}
-    </React.Fragment>
-  );
-};
+const navigationIconButton = props => (
+  <ButtonWrapper {...props}
+    onMouseLeave={props.addTooltip ? props.mouseLeave : null}
+    onMouseEnter={props.addTooltip ? (e) => props.mouseOver(e, props.iconType) : null}
+    onClick={() => props.clicked(props.iconType)}>
+    <NavigationIcons iconType={props.iconType} />
+  </ButtonWrapper>
+);
 
 export default navigationIconButton;
 

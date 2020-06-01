@@ -12,7 +12,6 @@ const TextFieldInput = styled.input`
   padding: 10px 15px;
   box-sizing: border-box;
 
-
   &:focus {
     color: white;
     background-color: #333333;
@@ -24,7 +23,7 @@ const TextFieldInput = styled.input`
   }
 `;
 
-const textField = props => {
+const textField = ()=> {
   return (
     <TextFieldInput type="text" spellCheck="false" placeholder="Type new list name .." />
   );

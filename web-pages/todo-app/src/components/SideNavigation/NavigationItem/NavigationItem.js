@@ -16,6 +16,9 @@ const NavigationItem = styled.div`
     border-right: 5px solid #90caf9;
     box-sizing: border-box;
     transition: opacity ease-in-out 0.3s;
+    opacity: ${props => props.active ? "1" : "0"};
+    top: ${props => props.active ? "5px" : "13px"};
+    height: ${props => props.active ? "48px" : "32px"};
   }
 
   &:hover:before {
@@ -23,43 +26,11 @@ const NavigationItem = styled.div`
   }
 `;
 
-const NavigationItemActive = styled(NavigationItem)`
-  &::before {
-    opacity: 1;
-    top: 5px;
-    height: 48px;
-  }
-`;
-
-const NavigationItemDefault = styled(NavigationItem)`
-  &::before {
-    top: 13px;
-    height: 32px;
-    opacity: 0;
-  }
-`;
-
-const navigationItem = props => {
-  let navItem = (
-    <NavigationItemDefault>
-      {props.children}
-    </NavigationItemDefault>
-  );
-
-  if (props.active) {
-    navItem = (
-      <NavigationItemActive>
-        {props.children}
-      </NavigationItemActive>
-    );
-  }
-
-  return (
-    <React.Fragment>
-      {navItem}
-    </React.Fragment>
-  );
-};
+const navigationItem = props => (
+  <NavigationItem active={props.active}>
+    {props.children}
+  </NavigationItem>
+);
 
 export default navigationItem;
 
