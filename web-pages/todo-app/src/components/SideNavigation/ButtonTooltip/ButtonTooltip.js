@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Tooltip = styled.div`
 opacity: 0;
@@ -25,7 +26,6 @@ transition: opacity ease-in-out 0.3s;
 
 const TooltipText = styled.span`
   display: block;
-  width: 100%;
   word-wrap: break-word;
   max-width: 200px;
   background-color: black;
@@ -45,3 +45,8 @@ const buttonTooltip = props => {
 }
 
 export default buttonTooltip;
+
+buttonTooltip.propTypes = {
+  show: PropTypes.string,
+  top: PropTypes.number
+};

@@ -104,6 +104,8 @@ export default navigationIconButton;
 
 navigationIconButton.propTypes = {
   clicked: PropTypes.func,
+  mouseLeave: PropTypes.func,
+  mouseOver: PropTypes.func,
   iconType: PropTypes.string,
   active: PropTypes.bool,
   name: PropTypes.string

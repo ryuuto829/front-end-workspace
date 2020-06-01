@@ -1,11 +1,11 @@
 import React from 'react';
-import BottomNavigation from './components/SideNavigation/SideNavigation';
+import SideNavigation from './containers/SideNavigation';
 import './App.css';
 
 function App() {
   return (
     <div className="container">
-      <BottomNavigation />
+      <SideNavigation />
       <h1>Main content here</h1>
     </div>
   );
