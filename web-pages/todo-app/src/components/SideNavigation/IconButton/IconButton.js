@@ -25,29 +25,11 @@ const ButtonWrapper = styled.button`
   &:hover {
     cursor: pointer;
   }
-
-  /** Left indicator of current btn */
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: -15px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-right: 5px solid #90caf9;
-    box-sizing: inherit;
-  }
 `;
 
 const ButtonActive = styled(ButtonWrapper)`
   fill: #90caf9;
   border-radius: 30%;
-
-  &::before {
-    opacity: 1;
-    top: 0;
-    height: 48px;
-  }
 `;
 
 const ButtonDefault = styled(ButtonWrapper)`
@@ -56,17 +38,6 @@ const ButtonDefault = styled(ButtonWrapper)`
   &:hover{
     fill: #90caf9;
     border-radius: 30%;
-  }
-
-  &:hover:before {
-    opacity: 1;
-  }
-
-  &::before {
-    opacity: 0;
-    top: 8px;
-    height: 32px;
-    transition: opacity ease-in-out 0.3s;
   }
 `;
 

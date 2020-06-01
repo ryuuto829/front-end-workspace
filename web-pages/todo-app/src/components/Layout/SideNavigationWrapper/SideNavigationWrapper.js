@@ -2,35 +2,37 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SideMenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   background-color: #333;
   overflow-y: scroll;
   overflow-x: hidden;
-  position: relative;
+  position: fixed;
+  z-index: 200;
+  position: fixed;
 
-  /* Hide scrollbar but still can scroll*/
+  /* Hide scrollbar, but still can scroll */
   ::-webkit-scrollbar {
       width: 0px;
   }
    
-  /** Inset Divider after first button */
-  & button:first-of-type {
+  /* Inset Divider after first button */
+  & div:first-of-type {
     margin-top: 20px;
     margin-bottom: 15px;
+    position: relative;
     
     &::after {
       content: "";
       position: absolute;
       bottom: -10px;
+      left: 15px;
       height: 1px;
       background-color: rgba(255, 255, 255, 0.12);
-      width: 100%;
+      width: 48px;
     }
   }
 
-  & button:last-of-type {
+  & div:last-of-type {
     margin-bottom: 20px;
   }
 `;

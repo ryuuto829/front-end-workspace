@@ -1,7 +1,10 @@
 import React from 'react';
-import NavigationIconButton from '../components/SideNavigation/IconButton/NavigationIconButton';
+
+import NavigationIconButton from '../components/SideNavigation/IconButton/IconButton';
 import ButtonTooltip from '../components/SideNavigation/ButtonTooltip/ButtonTooltip';
-import SideNavigationWrapper from '../components/SideNavigation/SideNavigationWrapper/SideNavigationWrapper';
+import SideNavigationWrapper from '../components/Layout/SideNavigationWrapper/SideNavigationWrapper';
+import SideDrawer from '../components/SideNavigation/SideDrawer/SideDrawer';
+import NavigationItem from '../components/SideNavigation/NavigationItem/NavigationItem';
 
 class SideNavigation extends React.Component {
   state = {
@@ -21,18 +24,30 @@ class SideNavigation extends React.Component {
     },
     active: "today",
     showTooltip: null,
-    top: null
+    tooltipTopCoordinate: null,
+    showSideDrawer: false,
   }
 
   iconButtonClickHandler = buttonName => {
-    this.setState({
-      active: buttonName
-    });
+    if (buttonName === "add") {
+      this.setState({
+        active: buttonName,
+        showSideDrawer: true
+      });
+    } else {
+      this.setState({
+        active: buttonName,
+        showSideDrawer: false
+      });
+    }
   }
 
   onButtonOverHandler = (e, text) => {
     if (e.target) {
-      this.setState({ showTooltip: text, top: e.target.getBoundingClientRect().top });
+      this.setState({
+        showTooltip: text,
+        tooltipTopCoordinate: e.target.getBoundingClientRect().top
+      });
     }
   }
 
@@ -49,31 +64,37 @@ class SideNavigation extends React.Component {
     }
 
     const buttons = buttonsList.map(button => (
-      <NavigationIconButton
+      <NavigationItem
         key={this.state.buttons[button].id}
-        iconType={this.state.buttons[button].id}
-        name={this.state.buttons[button].title}
-        active={this.state.active === button}
-        clicked={this.iconButtonClickHandler}
-        mouseLeave={this.onButtonLeaveHandler}
-        mouseOver={this.onButtonOverHandler} />
+        active={this.state.active === button}>
+        <NavigationIconButton
+          iconType={this.state.buttons[button].id}
+          name={this.state.buttons[button].title}
+          active={this.state.active === button}
+          clicked={this.iconButtonClickHandler}
+          mouseLeave={this.onButtonLeaveHandler}
+          mouseOver={this.onButtonOverHandler} />
+      </NavigationItem>
     ));
 
     if (this.state.showTooltip) {
       tooltip = (
         <ButtonTooltip
           show={this.state.showTooltip}
-          top={this.state.top}>
+          top={this.state.tooltipTopCoordinate}>
           {this.state.buttons[this.state.showTooltip].title}
         </ButtonTooltip>
       );
     }
 
     return (
-      <SideNavigationWrapper>
+      <React.Fragment>
+        <SideNavigationWrapper>
+          {buttons}
+        </SideNavigationWrapper>
         {tooltip}
-        {buttons}
-      </SideNavigationWrapper>
+        <SideDrawer showed={this.state.showSideDrawer} />
+      </React.Fragment>
     );
   }
 }

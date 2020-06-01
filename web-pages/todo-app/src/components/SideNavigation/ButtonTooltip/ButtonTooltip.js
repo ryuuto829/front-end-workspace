@@ -7,7 +7,7 @@ opacity: 0;
 top: 0;
 left: 83px;
 position: fixed;
-z-index: 10;
+z-index: 300;
 width: max-content;
 transition: opacity ease-in-out 0.3s;
 
