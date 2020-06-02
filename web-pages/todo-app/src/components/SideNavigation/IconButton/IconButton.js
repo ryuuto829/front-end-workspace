@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import NavigationIcons from '../NavigationIcons/NavigationIcons';
+import Icons from '../../Icons/Icons';
 
 const ButtonWrapper = styled.button`
   position: relative;
@@ -54,7 +54,7 @@ const navigationIconButton = props => (
     onMouseLeave={props.addTooltip ? props.mouseLeave : null}
     onMouseEnter={props.addTooltip ? (e) => props.mouseOver(e, props.iconType) : null}
     onClick={() => props.clicked(props.iconType)}>
-    <NavigationIcons iconType={props.iconType} />
+    <Icons iconType={props.iconType} />
   </ButtonWrapper>
 );
 
