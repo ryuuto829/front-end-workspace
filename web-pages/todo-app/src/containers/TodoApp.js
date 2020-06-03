@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TasksContainer from '../components/Layout/TasksContainer/TasksContainer';
+import TodoContainer from '../layouts/TodoContainers/TodoContainer';
 import TasksConstructor from '../components/TasksConstructor/TasksConstructor';
 
 class Tasks extends React.Component {
@@ -19,12 +19,12 @@ class Tasks extends React.Component {
 
   render() {
     return (
-      <TasksContainer>
+      <TodoContainer>
         <TasksConstructor
           onMouseOver={this.showControlsHandler}
           onMouseLeave={this.hideControlsHandler}
           showedControls={this.state.showedControls} />
-      </TasksContainer>
+      </TodoContainer>
     );
   }
 };

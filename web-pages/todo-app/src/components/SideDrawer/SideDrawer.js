@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import SideDrawerMenu from '../../Layout/SideDrawerMenu/SideDrawerMenu';
+import SideDrawerMenuContainer from '../../layouts/SideNavigationContainers/SideDrawerMenuContainer';
 import TextField from '../TextField/TextField';
 import IconButton from '../IconButton/IconButton';
-import SideDrawerForm from '../../Layout/SideDrawerForm/SideDrawerForm';
+import SideDrawerFormContainer from '../../layouts/SideNavigationContainers/SideDrawerFormContainer';
 
 const TopControlsWrapper = styled.div`
   display: flex;
@@ -33,15 +33,15 @@ const Title = styled.h2`
 `;
 
 const sideDrawer = props => (
-  <SideDrawerMenu showed={props.showed}>
+  <SideDrawerMenuContainer showed={props.showed}>
     <TopControlsWrapper>
       <Title>New ToDo List</Title>
       <IconButton iconType="closeDrawer" clicked={props.closeDrawer} dark />
     </TopControlsWrapper>
-    <SideDrawerForm>
+    <SideDrawerFormContainer>
       <TextField />
-    </SideDrawerForm>
-  </SideDrawerMenu>
+    </SideDrawerFormContainer>
+  </SideDrawerMenuContainer>
 );
 
 export default sideDrawer;

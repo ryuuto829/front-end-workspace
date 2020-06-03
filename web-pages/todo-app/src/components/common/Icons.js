@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { BUTTON_TYPES } from '../../containers/IconTypes';
+const BUTTON_TYPES = {
+  add: "add",
+  today: "today",
+  settings: "settings",
+  closeDrawer: "closeDrawer",
+  delete: "delete",
+};
 
 const Icon = styled.svg`
   fill: inherit;
@@ -57,7 +63,7 @@ const navigationIcons = props => {
       {icon}
     </React.Fragment>
   );
-}
+};
 
 export default navigationIcons;
 

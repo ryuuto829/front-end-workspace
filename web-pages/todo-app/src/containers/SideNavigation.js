@@ -1,10 +1,10 @@
 import React from 'react';
 
-import NavigationIconButton from '../components/SideNavigation/IconButton/IconButton';
-import ButtonTooltip from '../components/SideNavigation/ButtonTooltip/ButtonTooltip';
-import SideNavigationWrapper from '../components/Layout/SideNavigationWrapper/SideNavigationWrapper';
-import SideDrawer from '../components/SideNavigation/SideDrawer/SideDrawer';
-import NavigationItem from '../components/SideNavigation/NavigationItem/NavigationItem';
+import SideNavigationContainer from '../layouts/SideNavigationContainers/SideNavigationContainer';
+import SideNavigationItemContainer from '../layouts/SideNavigationContainers/SideNavigationItemContainer';
+import NavigationIconButton from '../components/IconButton/IconButton';
+import ButtonTooltip from '../components/ButtonTooltip/ButtonTooltip';
+import SideDrawer from '../components/SideDrawer/SideDrawer';
 
 class SideNavigation extends React.Component {
   state = {
@@ -68,7 +68,7 @@ class SideNavigation extends React.Component {
     }
 
     const buttons = buttonsList.map(button => (
-      <NavigationItem
+      <SideNavigationItemContainer
         key={this.state.buttons[button].id}
         active={this.state.active === button}>
         <NavigationIconButton
@@ -80,7 +80,7 @@ class SideNavigation extends React.Component {
           clicked={this.iconButtonClickHandler}
           mouseLeave={this.onButtonLeaveHandler}
           mouseOver={this.onButtonOverHandler} />
-      </NavigationItem>
+      </SideNavigationItemContainer>
     ));
 
     if (this.state.showTooltip) {
@@ -95,13 +95,13 @@ class SideNavigation extends React.Component {
 
     return (
       <React.Fragment>
-        <SideNavigationWrapper>
+        <SideNavigationContainer>
           {buttons}
-        </SideNavigationWrapper>
-        {tooltip}
-        <SideDrawer
-          showed={this.state.showSideDrawer}
-          closeDrawer={this.closeSideDrawerHandler} />
+        </SideNavigationContainer>
+          {tooltip}
+          <SideDrawer
+            showed={this.state.showSideDrawer}
+            closeDrawer={this.closeSideDrawerHandler} />
       </React.Fragment>
     );
   }

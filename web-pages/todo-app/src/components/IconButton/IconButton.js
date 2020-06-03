@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Icons from '../../Icons/Icons';
+import Icons from '../common/Icons';
 
 const ButtonWrapper = styled.button`
   position: relative;
