@@ -1,21 +1,18 @@
-/* action types */
+import { ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
 
-export const ADD_TODO = 'ADD_TODO';
-export const REMOVE_TODO = 'REMOVE_TODO';
-export const TOGGLE_TODO = 'TOGGLE_TODO';
+let nextTodoId = 0;
 
-/* action creators */
+export const addTodo = content => ({
+  type: ADD_TODO,
+  payload: {
+    id: ++nextTodoId,
+    content
+  }
+});
 
-export function addTodo(text) {
-  return {
-    type: ADD_TODO,
-    text
-  };
-}
+export const toggleTodo = id => ({
+  type: TOGGLE_TODO,
+  payload: { id }
+});
 
-export function toggleTodo(index) {
-  return {
-    type: TOGGLE_TODO,
-    index
-  };
-}
+export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });
