@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TaskItem from '../TaskItem/TaskItem';
+import TaskItem from '../TodoItem/TodoItem';
 
 const MainContainer = styled.div`
   max-width: 500px;
@@ -12,10 +12,9 @@ const MainContainer = styled.div`
 const tasksConstructor = props => {
   return (
     <MainContainer>
-      <h1>Here are tasks Title</h1>
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
+      <TaskItem id="1" text="text1" />
+      <TaskItem id="2" text="text2" />
+      <TaskItem id="3" text="text3" />
     </MainContainer >
   );
 };

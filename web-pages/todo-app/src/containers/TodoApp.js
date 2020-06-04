@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import TodoContainer from '../layouts/TodoContainers/TodoContainer';
-import TasksConstructor from '../components/TasksConstructor/TasksConstructor';
+import TodoList from '../components/TodoList/TodoList';
 
 class Tasks extends React.Component {
   state = {
-    showedControls: false
+    showedControls: false,
+    input: ''
   };
 
   hideControlsHandler = () => {
@@ -17,10 +19,18 @@ class Tasks extends React.Component {
     this.setState({ showedControls: true });
   };
 
+  handleAddTodo = () => {
+    // dispatches actions to add todo
+    this.props.addTodo(this.state.input)
+
+    // sets state back to empty string
+    this.setState({ input: '' })
+  }
+
   render() {
     return (
       <TodoContainer>
-        <TasksConstructor
+        <TodoList
           onMouseOver={this.showControlsHandler}
           onMouseLeave={this.hideControlsHandler}
           showedControls={this.state.showedControls} />
@@ -29,4 +39,4 @@ class Tasks extends React.Component {
   }
 };
 
-export default Tasks;
+export default connect()(Tasks);
