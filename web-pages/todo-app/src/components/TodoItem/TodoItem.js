@@ -18,7 +18,7 @@ const TodoItem = styled.div`
 
 const todoItem = props => (
   <TodoItem>
-    <Checkbox id={props.id} text={props.text} />
+    <Checkbox id={props.id} text={props.text} completed={props.completed} />
   </TodoItem>
 );
 

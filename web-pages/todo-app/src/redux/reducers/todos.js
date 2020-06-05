@@ -1,21 +1,21 @@
 import { ADD_TODO, TOGGLE_TODO } from "../actionTypes";
 
 const initialState = {
-  allIds: [],
-  byIds: {}
+  listOfIDs: [],
+  todos: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO: {
-      const { id, content } = action.payload;
+      const { id, text } = action.payload;
       return {
         ...state,
-        allIds: [...state.allIds, id],
-        byIds: {
-          ...state.byIds,
+        listOfIDs: [...state.listOfIDs, id],
+        todos: {
+          ...state.todos,
           [id]: {
-            content,
+            text,
             completed: false
           }
         }
@@ -25,11 +25,11 @@ export default function(state = initialState, action) {
       const { id } = action.payload;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
+        todos: {
+          ...state.todos,
           [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed
+            ...state.todos[id],
+            completed: !state.todos[id].completed
           }
         }
       };

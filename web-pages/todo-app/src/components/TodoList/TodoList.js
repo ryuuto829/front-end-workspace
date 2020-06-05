@@ -12,9 +12,9 @@ const MainContainer = styled.div`
 const tasksConstructor = props => {
   return (
     <MainContainer>
-      <TaskItem id="1" text="text1" />
+      <TaskItem id="1" text="text1" completed />
       <TaskItem id="2" text="text2" />
-      <TaskItem id="3" text="text3" />
+      <TaskItem id="3" text="text3" completed/>
     </MainContainer >
   );
 };

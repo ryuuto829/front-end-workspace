@@ -11,6 +11,8 @@ const Checkbox = styled.input`
     display: inline-flex;
     align-items: center;
     user-select: none;
+    color: ${props => props.completed ? "grey" : "white"};
+    text-decoration: ${props => props.completed ? "line-through" : "none"};
   }
 
   &+label::before {
@@ -59,7 +61,7 @@ const Checkbox = styled.input`
 const checkbox = props => (
   <React.Fragment>
     <Checkbox type="checkbox" id={props.id} />
-    <label htmlFor={props.id}>{props.text}</label>
+    <label completed={props.completed || null} htmlFor={props.id}>{props.text}</label>
   </React.Fragment>
 );
 
@@ -68,4 +70,5 @@ export default checkbox;
 checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  completed: PropTypes.bool
 };
