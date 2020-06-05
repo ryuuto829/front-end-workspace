@@ -13,12 +13,15 @@ class AddTodo extends Component {
 
   addTodoHandler = () => {
     addTodo(this.state.inputText);
-    this.setState({ inputText: "" });
   }
 
   render() {
     return (
-      <form onSubmit={e => e.preventDefault()}>
+      <form onSubmit={e =>{
+        e.preventDefault();
+        this.props.dispatch(addTodo(this.state.inputText));
+        this.setState({inputText: ''})
+      } }>
         <input
           onChange={e => this.changeInputTextHandler(e.target.value)}
           value={this.state.inputText}
@@ -31,4 +34,4 @@ class AddTodo extends Component {
   }
 }
 
-export default connect(null, { addTodo })(AddTodo);
+export default connect()(AddTodo);

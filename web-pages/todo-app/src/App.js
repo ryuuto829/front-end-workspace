@@ -1,14 +1,12 @@
 import React from 'react';
-
-import SideNavigation from './containers/SideNavigation';
-import TodoApp from './containers/TodoApp';
+// import SideNavigation from './containers/SideNavigation';
+import TodoApp from './todoApp/containers/TodoApp';
 
 function App() {
   return (
-      <div>
-        <SideNavigation />
-        <TodoApp />
-      </div>
+    <div>
+      <TodoApp />
+    </div>
   );
 }
 
