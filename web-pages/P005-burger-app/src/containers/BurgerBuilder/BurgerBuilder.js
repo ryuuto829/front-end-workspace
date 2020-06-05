@@ -13,7 +13,6 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class BurgerBuilder extends React.Component {
   state = {
-    purchasable: false,
     purchasing: false,
     loading: false,
     error: false
@@ -38,7 +37,7 @@ class BurgerBuilder extends React.Component {
         return sum + el;
       }, 0);
 
-    this.setState({ purchasable: sum > 0 });
+    return sum > 0;
   }
 
   purchaseHandler = () => {
@@ -51,19 +50,14 @@ class BurgerBuilder extends React.Component {
 
   purchaseContinueHandler = () => {
     //alert('You Continue!');
-    const queryParams = [];
-    for (let i in this.props.ing) {
-      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.ing[i]));
-    }
+    // const queryParams = [];
+    // for (let i in this.props.ing) {
+    //   queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.ing[i]));
+    // }
+    // queryParams.push('price=' + this.props.price);
+    // const queryString = queryParams.join('&');
 
-    queryParams.push('price=' + this.props.price);
-
-    const queryString = queryParams.join('&');
-
-    this.props.history.push({
-      pathname: '/checkout',
-      search: '?' + queryString
-    });
+    this.props.history.push('/checkout');
   }
 
   render() {
@@ -87,7 +81,7 @@ class BurgerBuilder extends React.Component {
             ingredientRemove={this.props.onIngredientRemoved}
             disabled={disabledInfo}
             price={this.props.price}
-            purchasable={this.state.purchasable}
+            purchasable={this.updatePurchaseState(this.props.ing)}
             ordered={this.purchaseHandler} />
         </Aux>);
 
