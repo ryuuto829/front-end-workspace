@@ -1,13 +1,10 @@
 import React from 'react';
-// import SideNavigation from './containers/SideNavigation';
-import TodoApp from './todoApp/containers/TodoApp';
+import TodoApp from './containers/TodoApp/TodoApp';
 
-function App() {
-  return (
-    <div>
-      <TodoApp />
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <TodoApp />
+  </div>
+);
 
 export default App;
