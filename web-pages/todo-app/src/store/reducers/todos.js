@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, TOGGLE_DISPLAY_ORDER, MOVE_COMPLETED_TODO } from '../actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   todoByID: {
@@ -13,7 +13,8 @@ const initialState = {
   },
   todoAllIDs: ["24sbzl91yz0", "1oxjsne033z"],
   isAddTodoDown: false,
-  isCompletedTodoDown: false
+  isCompletedTodoDown: false,
+  activeVisibilityFilter: "SHOW_ALL"
 };
 
 const addTodo = (state, action) => {
@@ -86,18 +87,31 @@ const moveCompletedTodo = state => {
   }
 };
 
+const changeVisibilityFilter = (state, action) => {
+  return {
+    ...state,
+    todoByID: {
+      ...state.todoByID,
+    },
+    todoAllIDs: [...state.todoAllIDs],
+    activeVisibilityFilter: action.filter
+  }
+}
+
 const todos = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case actionTypes.ADD_TODO:
       return addTodo(state, action);
-    case TOGGLE_TODO:
+    case actionTypes.TOGGLE_TODO:
       return toggleTodo(state, action);
-    case REMOVE_TODO:
+    case actionTypes.REMOVE_TODO:
       return removeTodo(state, action);
-    case TOGGLE_DISPLAY_ORDER:
+    case actionTypes.TOGGLE_DISPLAY_ORDER:
       return toggleAddTodoPosition(state);
-    case MOVE_COMPLETED_TODO:
+    case actionTypes.MOVE_COMPLETED_TODO:
       return moveCompletedTodo(state);
+    case actionTypes.CHANGE_VISIBILITY_FILTER:
+      return changeVisibilityFilter(state, action);
     default:
       return state;
   }

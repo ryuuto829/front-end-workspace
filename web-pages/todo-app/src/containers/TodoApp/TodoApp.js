@@ -5,8 +5,10 @@ import {
   toggleTodo,
   removeTodo,
   toggleAddTodoPosition,
-  moveCompletedTodo
+  moveCompletedTodo,
+  changeVisibilityFilter
 } from '../../store/actions/index';
+import { VISIBILITY_FILTERS } from '../../store/utilities';
 
 class TodoApp extends Component {
   state = {
@@ -19,7 +21,12 @@ class TodoApp extends Component {
 
   submitTodoHandler = e => {
     e.preventDefault();
-    this.props.addTodo(this.state.todoInputText);
+    const text = this.state.todoInputText;
+
+    if (text.trim().length > 0) {
+      this.props.addTodo(text);
+    }
+
     this.setState({ todoInputText: '' })
   }
 
@@ -46,9 +53,31 @@ class TodoApp extends Component {
     if (list.length) {
       todoList = list.map(id => {
         const todo = this.props.todoList[id];
+        let visibility = [];
+
+        switch (this.props.activeVisibilityFilter) {
+          case VISIBILITY_FILTERS.all:
+            visibility = ["block", "block"];
+            break;
+          case VISIBILITY_FILTERS.complete:
+            visibility = ["block", "none"];
+            break;
+          case VISIBILITY_FILTERS.uncomplete:
+            visibility = ["none", "block"];
+            break;
+          default:
+            visibility = ["block", "block"];
+            break;
+        };
+
         return (
           <li key={id}
-            style={{ color: `${todo.completed ? "red" : "blue"}` }}>
+            style={{
+              display: `${todo.completed ? visibility[0] : visibility[1]}`,
+              color: `${todo.completed ? "red" : "blue"}`,
+              border: "1px solid #ccc",
+              margin: "5px"
+            }}>
             <span onClick={() => this.onCompleteTodoHandler(id)}>{todo.text}</span>
             <div onClick={() => this.removeTodoHandler(id)}>delete</div>
           </li>
@@ -56,7 +85,13 @@ class TodoApp extends Component {
       });
     }
     return todoList;
-  };
+  }
+
+  changeVisibilityFilterHandler = filter => {
+    if (this.props.activeVisibilityFilter !== VISIBILITY_FILTERS[filter]) {
+      this.props.changeVisibilityFIlter(VISIBILITY_FILTERS[filter]);
+    }
+  }
 
   render() {
     let todos = null;
@@ -95,6 +130,16 @@ class TodoApp extends Component {
       );
     }
 
+    const filterButtons = Object.keys(VISIBILITY_FILTERS).map(filter => {
+      const active = this.props.activeVisibilityFilter === VISIBILITY_FILTERS[filter];
+      return (
+        <button
+          style={{ color: `${active ? "red" : "black"}` }}
+          onClick={() => this.changeVisibilityFilterHandler(filter)}
+          key={filter}> {filter}</button >
+      );
+    });
+
     return (
       <div>
         <h1>My Todo App</h1>
@@ -115,6 +160,9 @@ class TodoApp extends Component {
           onClick={this.moveCompletedTodoHandler}>
           {this.props.isCompletedTodoDown ? "Return completed todo back" : "Move completed todo down"}
         </button>
+        <div>
+          {filterButtons}
+        </div>
       </div>
     )
   }
@@ -126,7 +174,8 @@ const mapStateToProps = state => {
     todoList: todos.todoByID,
     todoOrder: todos.todoAllIDs,
     isAddTodoDown: todos.isAddTodoDown,
-    isCompletedTodoDown: todos.isCompletedTodoDown
+    isCompletedTodoDown: todos.isCompletedTodoDown,
+    activeVisibilityFilter: todos.activeVisibilityFilter
   }
 };
 
@@ -136,7 +185,8 @@ const mapDispatchToProps = dispatch => {
     toggleTodo: id => dispatch(toggleTodo(id)),
     removeTodo: id => dispatch(removeTodo(id)),
     toggleAddTodoPosition: () => dispatch(toggleAddTodoPosition()),
-    moveCompletedTodo: () => dispatch(moveCompletedTodo())
+    moveCompletedTodo: () => dispatch(moveCompletedTodo()),
+    changeVisibilityFIlter: filter => dispatch(changeVisibilityFilter(filter))
   }
 };
 
