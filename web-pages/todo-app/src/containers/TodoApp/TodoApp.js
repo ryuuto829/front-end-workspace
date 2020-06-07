@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {
   addTodo,
@@ -10,10 +10,13 @@ import {
 } from '../../store/actions/index';
 import { VISIBILITY_FILTERS } from '../../store/utilities';
 
+import TodosContainer from '../../layouts/TodosContainer/TodosContainer';
+import DummyContainer from '../../layouts/DummyContainer/DummyContainer';
 import TextField from '../../components/TextField/TextField';
 import TodoItem from '../../components/TodoItem/TodoItem';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import TodoList from '../../components/TodoList/TodoList';
+import ListDivider from '../../components/ListDivider/ListDivider';
 
 class TodoApp extends Component {
   state = {
@@ -56,6 +59,11 @@ class TodoApp extends Component {
       this.props.changeVisibilityFIlter(VISIBILITY_FILTERS[filter]);
     }
   }
+
+  onDragEnd = () => {
+    console.log('da')
+    // the only one that is required
+  };
 
   /** Map list of ids to <li> items */
   createTodoList = list => {
@@ -130,15 +138,26 @@ class TodoApp extends Component {
 
   groupTodoItems = (todos) => {
     let id = 0;
+
     if (todos) {
-      return todos.map(list => (
-        <TodoList key={++id} show={list.length !== 0} >
-          {this.createTodoList(list)}
-        </TodoList>
-      ));
+      return todos.map(list => {
+        let divider = null;
+
+        if (id === 1 && list.length !== 0) {
+          divider = <ListDivider>Completed Todos</ListDivider>;
+        }
+        return (
+          <Fragment key={++id}>
+            {divider}
+            <TodoList show={list.length !== 0} >
+              {this.createTodoList(list)}
+            </TodoList>
+          </Fragment>
+        );
+      });
     }
     return (
-      <h1>The ToDo List is empty.</h1>
+      <DummyContainer>The ToDo List is empty</DummyContainer>
     );
   }
 
@@ -167,7 +186,9 @@ class TodoApp extends Component {
           submitedForm={this.submitTodoHandler}
           currentValue={this.state.todoInputText}
           changed={this.updateTodoInputTextHandler} />
-        {todos}
+        <TodosContainer>
+          {todos}
+        </TodosContainer>
         <button
           onClick={this.changeAddTodoPositionHandler}>
           {this.props.isAddTodoDown ? "Change to add todo on start" : "Change to add todo on end"}
@@ -179,7 +200,7 @@ class TodoApp extends Component {
         <div>
           {filterButtons}
         </div>
-      </div>
+      </div >
     )
   }
 }
