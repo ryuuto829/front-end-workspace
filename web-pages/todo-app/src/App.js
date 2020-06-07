@@ -2,7 +2,7 @@ import React from 'react';
 import TodoApp from './containers/TodoApp/TodoApp';
 
 const App = () => (
-  <div>
+  <div style={{ padding: "20px" }}>
     <TodoApp />
   </div>
 );

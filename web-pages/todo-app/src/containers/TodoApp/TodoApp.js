@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   addTodo,
@@ -9,6 +9,11 @@ import {
   changeVisibilityFilter
 } from '../../store/actions/index';
 import { VISIBILITY_FILTERS } from '../../store/utilities';
+
+import TextField from '../../components/TextField/TextField';
+import TodoItem from '../../components/TodoItem/TodoItem';
+import Checkbox from '../../components/Checkbox/Checkbox';
+import TodoList from '../../components/TodoList/TodoList';
 
 class TodoApp extends Component {
   state = {
@@ -46,11 +51,17 @@ class TodoApp extends Component {
     this.props.moveCompletedTodo();
   }
 
+  changeVisibilityFilterHandler = filter => {
+    if (this.props.activeVisibilityFilter !== VISIBILITY_FILTERS[filter]) {
+      this.props.changeVisibilityFIlter(VISIBILITY_FILTERS[filter]);
+    }
+  }
+
   /** Map list of ids to <li> items */
   createTodoList = list => {
     let todoList = null;
 
-    if (list.length) {
+    if (list.length > 0) {
       todoList = list.map(id => {
         const todo = this.props.todoList[id];
         let visibility = [];
@@ -71,64 +82,73 @@ class TodoApp extends Component {
         };
 
         return (
-          <li key={id}
-            style={{
-              display: `${todo.completed ? visibility[0] : visibility[1]}`,
-              color: `${todo.completed ? "red" : "blue"}`,
-              border: "1px solid #ccc",
-              margin: "5px"
-            }}>
-            <span onClick={() => this.onCompleteTodoHandler(id)}>{todo.text}</span>
-            <div onClick={() => this.removeTodoHandler(id)}>delete</div>
-          </li>
-        )
+          <TodoItem
+            key={id}
+            deleted={() => this.removeTodoHandler(id)}>
+            <Checkbox
+              checked={todo.completed}
+              id={id}
+              completed={todo.completed}
+              text={todo.text}
+              clicked={() => this.onCompleteTodoHandler(id)} />
+          </TodoItem>
+        );
       });
     }
     return todoList;
   }
 
-  changeVisibilityFilterHandler = filter => {
-    if (this.props.activeVisibilityFilter !== VISIBILITY_FILTERS[filter]) {
-      this.props.changeVisibilityFIlter(VISIBILITY_FILTERS[filter]);
-    }
-  }
+  /**
+   *  Sorting and group together ids of todos
+   *  isSpliting = condition whether list should be splited or not
+   *  generalTodoList = list of all todos ids
+   */
 
-  render() {
-    let todos = null;
-
-    if (this.props.isCompletedTodoDown) {
+  sortTodoItems = (isSpliting, generalTodoList) => {
+    if (!this.props.todoOrder.length) return null;
+    if (isSpliting) {
       const completed = [];
       const uncompleted = [];
 
-      this.props.todoOrder.forEach(id => {
+      generalTodoList.forEach(id => {
         const todo = this.props.todoList[id];
         if (todo.completed) {
           return completed.push(id);
         }
         return uncompleted.push(id);
       });
-
-      /** display two separate lists with todos */
-      todos = (
-        <Fragment>
-          <ul style={{ backgroundColor: "#eee" }}>
-            {this.createTodoList(uncompleted)}
-          </ul>
-          <ul style={{ backgroundColor: "#ccc" }}>
-            {this.createTodoList(completed)}
-          </ul>
-        </Fragment>
-      );
-
+      return [uncompleted, completed];
     } else {
-
-      /** display all todos in one list */
-      todos = (
-        <ul style={{ backgroundColor: "#eee" }}>
-          {this.createTodoList(this.props.todoOrder)}
-        </ul>
-      );
+      return [generalTodoList];
     }
+  }
+
+  /**
+   *  Display two separate lists with todos or one general list
+   *  todos = array of ids [uncompleted,completed] or [general]
+   */
+
+  groupTodoItems = (todos) => {
+    let id = 0;
+    if (todos) {
+      return todos.map(list => (
+        <TodoList key={++id} show={list.length !== 0} >
+          {this.createTodoList(list)}
+        </TodoList>
+      ));
+    }
+    return (
+      <h1>The ToDo List is empty.</h1>
+    );
+  }
+
+  render() {
+    /** generale list of todos */
+    const todos = this.groupTodoItems(
+      this.sortTodoItems(
+        this.props.isCompletedTodoDown,
+        this.props.todoOrder)
+    );
 
     const filterButtons = Object.keys(VISIBILITY_FILTERS).map(filter => {
       const active = this.props.activeVisibilityFilter === VISIBILITY_FILTERS[filter];
@@ -143,14 +163,10 @@ class TodoApp extends Component {
     return (
       <div>
         <h1>My Todo App</h1>
-        <form
-          onSubmit={this.submitTodoHandler}>
-          <input
-            type="text"
-            value={this.state.todoInputText}
-            onChange={this.updateTodoInputTextHandler} />
-          <button>Add todo</button>
-        </form>
+        <TextField
+          submitedForm={this.submitTodoHandler}
+          currentValue={this.state.todoInputText}
+          changed={this.updateTodoInputTextHandler} />
         {todos}
         <button
           onClick={this.changeAddTodoPositionHandler}>
