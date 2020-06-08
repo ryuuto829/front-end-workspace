@@ -13,8 +13,7 @@ const initialState = {
   },
   todoAllIDs: ["24sbzl91yz0", "1oxjsne033z"],
   isAddTodoDown: false,
-  isCompletedTodoDown: false,
-  activeVisibilityFilter: "SHOW_ALL"
+  isCompletedTodoDown: false
 };
 
 const addTodo = (state, action) => {
@@ -87,17 +86,6 @@ const moveCompletedTodo = state => {
   }
 };
 
-const changeVisibilityFilter = (state, action) => {
-  return {
-    ...state,
-    todoByID: {
-      ...state.todoByID,
-    },
-    todoAllIDs: [...state.todoAllIDs],
-    activeVisibilityFilter: action.filter
-  }
-}
-
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_TODO:
@@ -110,8 +98,6 @@ const todos = (state = initialState, action) => {
       return toggleAddTodoPosition(state);
     case actionTypes.MOVE_COMPLETED_TODO:
       return moveCompletedTodo(state);
-    case actionTypes.CHANGE_VISIBILITY_FILTER:
-      return changeVisibilityFilter(state, action);
     default:
       return state;
   }

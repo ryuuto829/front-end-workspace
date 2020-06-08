@@ -26,8 +26,3 @@ export const toggleAddTodoPosition = () => ({
 export const moveCompletedTodo = () => ({
   type: actionTypes.MOVE_COMPLETED_TODO
 });
-
-export const changeVisibilityFilter = filter => ({
-  type: actionTypes.CHANGE_VISIBILITY_FILTER,
-  filter
-});
