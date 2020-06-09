@@ -3,3 +3,7 @@ export const REMOVE_TODO = "REMOVE_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO_TODO";
 export const TOGGLE_DISPLAY_ORDER = "TOGGLE_DISPLAY_ORDER";
 export const MOVE_COMPLETED_TODO = "MOVE_COMPLETED_TODO";
+
+export const AUTH_START = "AUTH_START";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
