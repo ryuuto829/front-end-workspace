@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import AuthContainer from '../../layouts/AuthContainer/AuthContainer';
+import * as actions from '../../store/actions/index';
+import { connect } from 'react-redux';
 
 const FORM = {
   welcome: "welcome",
@@ -10,7 +12,8 @@ const FORM = {
 class Auth extends Component {
   state = {
     currentForm: "welcome",
-    loginInputText: ""
+    loginInputText: "",
+    passwordInputText: ""
   }
 
   openWelcomeFormHandler = () => {
@@ -29,8 +32,13 @@ class Auth extends Component {
     this.setState({ loginInputText: text });
   }
 
+  changePasswordInputText = text => {
+    this.setState({ passwordInputText: text })
+  }
+
   submitLoginForm = e => {
     e.preventDefault();
+    this.props.onAuth(this.state.loginInputText, this.state.passwordInputText);
   }
 
   render() {
@@ -65,7 +73,12 @@ class Auth extends Component {
               </div>
               <div style={{ display: "flex", margin: "20px 0" }}>
                 <label htmlFor="password" style={{ flex: "1" }}>Password  </label>
-                <input type="password" id="password" style={{ flex: "2", width: "100%" }} />
+                <input
+                  value={this.state.passwordInputText}
+                  onChange={e => this.changePasswordInputText(e.target.value)}
+                  type="password"
+                  id="password"
+                  style={{ flex: "2", width: "100%" }} />
               </div>
               <div style={{ margin: "10px 0" }}>
                 <button
@@ -80,7 +93,35 @@ class Auth extends Component {
         break;
       case FORM.register:
         form = (
-          <h1>da</h1>
+          <Fragment>
+            <form onSubmit={this.submitLoginForm}>
+              <div style={{ display: "flex", margin: "20px 0" }}>
+                <label htmlFor="name" style={{ flex: "1" }}>Login  </label>
+                <input
+                  onChange={e => this.changeLoginInputText(e.target.value)}
+                  value={this.state.loginInputText}
+                  type="text"
+                  id="name"
+                  style={{ flex: "2", width: "100%" }} />
+              </div>
+              <div style={{ display: "flex", margin: "20px 0" }}>
+                <label htmlFor="password" style={{ flex: "1" }}>Password  </label>
+                <input
+                  value={this.state.passwordInputText}
+                  onChange={e => this.changePasswordInputText(e.target.value)}
+                  type="password"
+                  id="password"
+                  style={{ flex: "2", width: "100%" }} />
+              </div>
+              <div style={{ margin: "10px 0" }}>
+                <button
+                  style={{ padding: "10px", width: "100%" }}>SUBMIT</button>
+              </div>
+            </form>
+            <button
+              style={{ padding: "10px", width: "100%" }}
+              onClick={this.openWelcomeFormHandler}>Back</button>
+          </Fragment>
         );
         break;
       default:
@@ -95,4 +136,10 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapDispathToProps = dispatch => {
+  return {
+    onAuth: (email, password) => dispatch(actions.auth(email, password))
+  };
+};
+
+export default connect(null, mapDispathToProps)(Auth);
