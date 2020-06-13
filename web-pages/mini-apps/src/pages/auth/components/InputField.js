@@ -41,6 +41,7 @@ const inputField = ({ label, inputType, inputValue, inputChanged }) => (
     <StyledInput
       value={inputValue}
       onChange={inputChanged}
+      required
       autocomplete="false"
       type={inputType}
       id={label} />
