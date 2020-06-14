@@ -6,7 +6,7 @@ import InputField from '../components/InputField';
 import TextButton from '../components/TextButton';
 import Button from '../components/Button';
 
-const AuthForm = () => {
+const RegisterForm = () => {
   const [emailInputText, setEmailInputText] = useState('');
   const [passwordInputText, setPasswordInputText] = useState('');
 
@@ -19,20 +19,21 @@ const AuthForm = () => {
   return (
     <AuthFormContainer
       submited={submitFormHandler}>
-      {/* BUG: if type = email, can't delete whitespaces holding backspace:
-        https://github.com/facebook/react/issues/6368
-        */}
       <InputField
         inputValue={emailInputText}
         inputChanged={e => setEmailInputText(e.target.value)}
         inputType="email"
         label="email" />
+              <InputField
+        inputValue={emailInputText}
+        inputChanged={e => setEmailInputText(e.target.value)}
+        inputType="text"
+        label="username" />
       <InputField
         inputValue={passwordInputText}
         inputChanged={e => setPasswordInputText(e.target.value)}
         inputType="password"
         label="password" />
-      <TextButton>Forgot your password?</TextButton>
       <AuthSubmitContainer>
         <Button>Login</Button>
       </AuthSubmitContainer>
@@ -47,4 +48,4 @@ const AuthForm = () => {
   );
 };
 
-export default AuthForm;
+export default RegisterForm;

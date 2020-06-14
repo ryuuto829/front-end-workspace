@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledHeader = styled.h1`
@@ -15,11 +16,20 @@ const StyledText = styled.p`
   text-align: center;
 `;
 
-const authHeader = () => (
-  <Fragment>
-    <StyledHeader>Welcome Back!</StyledHeader>
-    <StyledText>We're so excited to see you again!</StyledText>
-  </Fragment>
-);
+const authHeader = ({ caption, description = null }) => {
+  let text = null
+  if (description) text = <StyledText>{description}</StyledText>;
+  return (
+    <Fragment>
+      <StyledHeader>{caption}</StyledHeader>
+      {text}
+    </Fragment>
+  );
+};
 
 export default authHeader;
+
+authHeader.propTypes = {
+  caption: PropTypes.string.isRequired,
+  description: PropTypes.string
+};

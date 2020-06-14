@@ -1,17 +1,24 @@
 import React from 'react';
 
+import AuthBodyContainer from './layout/AuthBodyContainer';
 import AuthContainer from './layout/AuthContainer';
-import AuthWrapperContainer from './layout/AuthWrapperContainer';
-import AuthForm from './containers/AuthForm';
+import LoginForm from './containers/LoginForm';
 import AuthHeader from './components/AuthHeader';
 
+import RegisterForm from './containers/RegisterForm';
+
 const auth = () => (
-  <AuthWrapperContainer>
+  <AuthBodyContainer>
     <AuthContainer>
-      <AuthHeader />
-      <AuthForm />
+      <AuthHeader
+        caption="Welcome Back!"
+        description="We're so excited to see you again!" />
+      <LoginForm />
+      <AuthHeader
+        caption="Create an account" />
+      <RegisterForm />
     </AuthContainer>
-  </AuthWrapperContainer>
+  </AuthBodyContainer>
 );
 
 export default auth;

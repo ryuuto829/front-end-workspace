@@ -43,7 +43,7 @@ const inputField = ({ label, inputType, inputValue, inputChanged }) => (
       onChange={inputChanged}
       required
       autocomplete="false"
-      type={inputType}
+      type={inputType === "email" ? "text" : inputType}
       id={label} />
   </InputFieldContainer>
 );
