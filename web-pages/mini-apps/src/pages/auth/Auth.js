@@ -1,22 +1,25 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import AuthBodyContainer from './layout/AuthBodyContainer';
 import AuthContainer from './layout/AuthContainer';
 import LoginForm from './containers/LoginForm';
-import AuthHeader from './components/AuthHeader';
 
 import RegisterForm from './containers/RegisterForm';
+
+// Test home page (delete later)
+const Home = () => (
+  <h1>hello</h1>
+);
 
 const auth = () => (
   <AuthBodyContainer>
     <AuthContainer>
-      <AuthHeader
-        caption="Welcome Back!"
-        description="We're so excited to see you again!" />
-      <LoginForm />
-      <AuthHeader
-        caption="Create an account" />
-      <RegisterForm />
+      <Switch>
+        <Route path="/login" component={LoginForm} />
+        <Route path="/register" component={RegisterForm} />
+        <Route path="/" exact component={Home} />
+      </Switch>
     </AuthContainer>
   </AuthBodyContainer>
 );
