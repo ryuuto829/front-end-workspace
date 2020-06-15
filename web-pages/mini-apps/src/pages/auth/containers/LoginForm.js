@@ -8,28 +8,50 @@ import InputField from '../components/InputField';
 import TextButton from '../components/TextButton';
 import Button from '../components/Button';
 
-const checkValidity = input => {
-  return true;
+const checkEmailValidity = input => {
+  const EMAIL_REGEX = /\S+@\S+\.\S+/; // text@text.text
+  return EMAIL_REGEX.test(input);
+};
+
+const checkPasswordValidity = input => {
+  const EMAIL_REGEX = /\S+@\S+\.\S+/; // text@text.text
+  return EMAIL_REGEX.test(input);
+};
+
+const addFailedValidityMessage = input => {
+  if (input.trim().length === 0) return "This field is required";
+  return "Not well formed email address";
 };
 
 const AuthForm = () => {
-  const [emailInput, setEmailInput] = useState({ text: '', isValid: true });
-  const [passwordInput, setPasswordInput] = useState({ text: '', isValid: true });
+  /** EMAIL INPUT STATE */
+  const [emailInput, setEmailInput] = useState({
+    inputType: "email",
+    label: "Email",
+    isRequired: true,
+    text: '',
+    isValid: true
+  });
+
+  /** PASSWORD INPUT STATE */
+  const [passwordInput, setPasswordInput] = useState({
+    inputType: "password",
+    label: "Password",
+    isRequired: true,
+    text: '',
+    isValid: true
+  });
+
+  /** SUCCESS LOGIN STATE */
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const submitFormHandler = e => {
     e.preventDefault();
+    const emailValid = checkEmailValidity(emailInput.text);
+    const passwordValid = checkPasswordValidity(passwordInput.text);
 
-    const emailValid = checkValidity(emailInput.text);
-    const passwordValid = checkValidity(passwordInput.text);
-
-    if (!emailValid) {
-      setEmailInput({ ...emailInput, isValid: false });
-    }
-
-    if (!passwordValid) {
-      setPasswordInput({ ...passwordInput, isValid: false });
-    }
+    setEmailInput({ ...emailInput, isValid: emailValid });
+    setPasswordInput({ ...passwordInput, isValid: passwordValid });
 
     if (emailValid && passwordValid) {
       setSubmitSuccess(true);
@@ -51,11 +73,14 @@ const AuthForm = () => {
       <AuthFormContainer
         submited={submitFormHandler}>
         <InputField
+          failedValidityMessage={!emailInput.isValid ? addFailedValidityMessage(emailInput.text) : null}
+          isValid={emailInput.isValid}
           inputValue={emailInput.text}
           inputChanged={e => setEmailInput({ ...emailInput, text: e.target.value })}
           inputType="email"
           label="email" />
         <InputField
+          isValid={passwordInput.isValid}
           inputValue={passwordInput.text}
           inputChanged={e => setPasswordInput({ ...emailInput, text: e.target.value })}
           inputType="password"
