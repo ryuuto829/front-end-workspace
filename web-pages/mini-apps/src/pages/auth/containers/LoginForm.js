@@ -7,21 +7,7 @@ import AuthHeader from '../components/AuthHeader';
 import InputField from '../components/InputField';
 import TextButton from '../components/TextButton';
 import Button from '../components/Button';
-
-const checkEmailValidity = input => {
-  const EMAIL_REGEX = /\S+@\S+\.\S+/; // text@text.text
-  return EMAIL_REGEX.test(input);
-};
-
-const checkPasswordValidity = input => {
-  const EMAIL_REGEX = /\S+@\S+\.\S+/; // text@text.text
-  return EMAIL_REGEX.test(input);
-};
-
-const addFailedValidityMessage = input => {
-  if (input.trim().length === 0) return "This field is required";
-  return "Not well formed email address";
-};
+import checkInput from './Validation';
 
 const AuthForm = () => {
   /** EMAIL INPUT STATE */
@@ -30,7 +16,8 @@ const AuthForm = () => {
     label: "Email",
     isRequired: true,
     text: '',
-    isValid: true
+    isValid: true,
+    failedValidationMessage: null
   });
 
   /** PASSWORD INPUT STATE */
@@ -39,7 +26,8 @@ const AuthForm = () => {
     label: "Password",
     isRequired: true,
     text: '',
-    isValid: true
+    isValid: true,
+    failedValidationMessage: null
   });
 
   /** SUCCESS LOGIN STATE */
@@ -47,13 +35,22 @@ const AuthForm = () => {
 
   const submitFormHandler = e => {
     e.preventDefault();
-    const emailValid = checkEmailValidity(emailInput.text);
-    const passwordValid = checkPasswordValidity(passwordInput.text);
+    const emailValidation = checkInput(emailInput.text, emailInput.inputType);
+    const passwordValidation = checkInput(passwordInput.text, passwordInput.inputType);
 
-    setEmailInput({ ...emailInput, isValid: emailValid });
-    setPasswordInput({ ...passwordInput, isValid: passwordValid });
+    setEmailInput(prevState => ({
+      ...prevState,
+      isValid: emailValidation === null,
+      failedValidationMessage: emailValidation
+    }));
 
-    if (emailValid && passwordValid) {
+    setPasswordInput(prevState => ({
+      ...prevState,
+      isValid: passwordValidation === null,
+      failedValidationMessage: passwordValidation
+    }));
+
+    if (emailValidation === null && passwordValidation === null) {
       setSubmitSuccess(true);
     }
   };
@@ -73,16 +70,17 @@ const AuthForm = () => {
       <AuthFormContainer
         submited={submitFormHandler}>
         <InputField
-          failedValidityMessage={!emailInput.isValid ? addFailedValidityMessage(emailInput.text) : null}
+          failedValidityMessage={emailInput.failedValidationMessage}
           isValid={emailInput.isValid}
           inputValue={emailInput.text}
           inputChanged={e => setEmailInput({ ...emailInput, text: e.target.value })}
           inputType="email"
           label="email" />
         <InputField
+          failedValidityMessage={passwordInput.failedValidationMessage}
           isValid={passwordInput.isValid}
           inputValue={passwordInput.text}
-          inputChanged={e => setPasswordInput({ ...emailInput, text: e.target.value })}
+          inputChanged={e => setPasswordInput({ ...passwordInput, text: e.target.value })}
           inputType="password"
           label="password" />
         <TextButton>Forgot your password?</TextButton>
