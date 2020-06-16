@@ -9,7 +9,10 @@ import RegisterForm from './containers/RegisterForm';
 
 // Test home page (delete later)
 const Home = () => (
-  <h1>hello</h1>
+  <div>
+    <h1>hello</h1>
+    <button>Log out</button>
+  </div>
 );
 
 const auth = () => (

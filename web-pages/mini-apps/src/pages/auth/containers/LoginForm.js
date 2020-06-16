@@ -50,9 +50,36 @@ const AuthForm = () => {
       failedValidationMessage: passwordValidation
     }));
 
+    /** SUBMIT FORM AFTER CLIENT-SIDE VALIDATION */
     if (emailValidation === null && passwordValidation === null) {
-      setSubmitSuccess(true);
+      const API_KEY = "AIzaSyBP35fN5kxqq_hYobER3JZKhajME9ePZIc";
+      const config = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: emailInput.text,
+          password: passwordInput.text,
+          returnSecureToken: true
+        })
+      };
+
+      fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, config)
+        .then(res => {
+          return res.json();
+        })
+        .then(res => {
+          if (res.idToken) {
+            setSubmitSuccess(true);
+          }
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
+
   };
 
   // Change it with actual redirect to user's page
