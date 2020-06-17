@@ -28,7 +28,7 @@ const StyledInput = styled.input`
   transition: border-color .2s ease-in-out;
 
   &:focus {
-    border-color: #7289da;
+    border-color: ${props => props.isValid ? "#7289da" : "1px solid rgb(240, 71, 71);"} ;
   }
 `;
 
@@ -59,7 +59,7 @@ const inputField = ({
         isValid={isValid}
         value={inputValue}
         onChange={inputChanged}
-        autocomplete="false"
+        autoComplete="off"
         type={inputType}
         id={label} />
     </InputFieldContainer>

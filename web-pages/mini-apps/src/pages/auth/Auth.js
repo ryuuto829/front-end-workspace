@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import AuthBodyContainer from './layout/AuthBodyContainer';
 import AuthContainer from './layout/AuthContainer';
 import LoginForm from './containers/LoginForm';
-
 import RegisterForm from './containers/RegisterForm';
 
 // Test home page (delete later)

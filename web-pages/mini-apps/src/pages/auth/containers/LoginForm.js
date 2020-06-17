@@ -8,6 +8,7 @@ import InputField from '../components/InputField';
 import TextButton from '../components/TextButton';
 import Button from '../components/Button';
 import checkInput from './Validation';
+import Spinner from '../components/Spinner';
 
 const AuthForm = () => {
   /** EMAIL INPUT STATE */
@@ -112,7 +113,7 @@ const AuthForm = () => {
           label="password" />
         <TextButton>Forgot your password?</TextButton>
         <AuthSubmitContainer>
-          <Button>Login</Button>
+          <Button>Login<Spinner /></Button>
         </AuthSubmitContainer>
         <AuthSubmitContainer>
           <span
