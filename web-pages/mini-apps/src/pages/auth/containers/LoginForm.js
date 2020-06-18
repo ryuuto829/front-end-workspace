@@ -7,8 +7,8 @@ import AuthHeader from '../components/AuthHeader';
 import InputField from '../components/InputField';
 import TextButton from '../components/TextButton';
 import Button from '../components/Button';
-import checkInput from './Validation';
 import Spinner from '../components/Spinner';
+import { addInputs, checkValidation, submitData } from './Authorization';
 
 const AuthForm = () => {
   /** EMAIL INPUT STATE */
@@ -31,78 +31,26 @@ const AuthForm = () => {
     failedValidationMessage: null
   });
 
-  const inputs = [
-    {
-      state: emailInput,
-      setState: setEmailInput
-    },
-    {
-      state: passwordInput,
-      setState: setPasswordInput
-    }
-  ];
-
   /** SUCCESS LOGIN STATE */
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  /** FUNCTIONS */
-  const updateValidationState = (input, setInput) => {
-    setInput(prevState => ({
-      ...prevState,
-      isValid: input === null,
-      failedValidationMessage: input
-    }));
-  };
+  /** SETUP INPUTS */
+  const inputs = [];
+  inputs.push(addInputs(emailInput, setEmailInput));
+  inputs.push(addInputs(passwordInput, setPasswordInput));
 
   /** HANDLERS */
   const submitFormHandler = e => {
     e.preventDefault();
     setLoading(true);
 
-    let checkSubmitValidity = true;
-
-    for (let input of inputs) {
-      const validation = checkInput(input.state.text, input.state.inputType);
-      updateValidationState(validation, input.setState);
-      if (validation !== null) checkSubmitValidity = false;
-    }
+    const checkSubmitValidity = checkValidation(inputs);
 
     /** SUBMIT FORM AFTER CLIENT-SIDE VALIDATION */
     if (checkSubmitValidity) {
-      const API_KEY = "AIzaSyBP35fN5kxqq_hYobER3JZKhajME9ePZIc";
-      const loginConfig = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: emailInput.text,
-          password: passwordInput.text,
-          returnSecureToken: true
-        })
-      };
-
-      fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, loginConfig)
-        .then(res => {
-          setLoading(true);
-          return res.json();
-        })
-        .then(res => {
-          setEmailInput({ ...emailInput, text: "" });
-          setPasswordInput({ ...passwordInput, text: "" });
-          setLoading(false);
-
-          if (res.error) throw res.error;
-          if (res.idToken) setSubmitSuccess(true);
-        })
-        .catch(err => {
-          const errorMessage = err.message.toLowerCase().split('_').join(' ');
-
-          updateValidationState(errorMessage, setEmailInput);
-          updateValidationState(errorMessage, setPasswordInput);
-          setLoading(false);
-        });
+      submitData("login", inputs[0], inputs[1], setSubmitSuccess);
+      setLoading(false);
     } else {
       setLoading(false);
     }
@@ -133,15 +81,15 @@ const AuthForm = () => {
           isValid={emailInput.isValid}
           inputValue={emailInput.text}
           inputChanged={e => setEmailInput({ ...emailInput, text: e.target.value })}
-          inputType="email"
-          label="email" />
+          inputType={emailInput.inputType}
+          label={emailInput.label} />
         <InputField
           failedValidityMessage={passwordInput.failedValidationMessage}
           isValid={passwordInput.isValid}
           inputValue={passwordInput.text}
           inputChanged={e => setPasswordInput({ ...passwordInput, text: e.target.value })}
-          inputType="password"
-          label="password" />
+          inputType={passwordInput.inputType}
+          label={passwordInput.label} />
         <AuthSubmitContainer>
           <Button>{submitButtonText}</Button>
         </AuthSubmitContainer>

@@ -4,7 +4,7 @@ const checkEmailValidity = input => {
   return EMAIL_REGEX.test(input);
 };
 
-export default function checkInput(inputText, inputType) {
+export default function checkInput(inputText, inputType = "text") {
   const text = inputText.trim();
 
   /** GENERAL VALIDATION CHEKING */
@@ -16,6 +16,9 @@ export default function checkInput(inputText, inputType) {
       return null;
     case "password":
       if (text.length < 6) return "Must be 6 or more in length";
+      return null;
+    case "text":
+      if (text.length < 3) return "Must be 3 or more in length";
       return null;
     default:
       return null;
