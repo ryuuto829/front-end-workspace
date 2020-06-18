@@ -10,7 +10,7 @@ import Button from '../components/Button';
 import Spinner from '../components/Spinner';
 import { addInputs, checkValidation, submitData } from './Authorization';
 
-const RegisterForm = () => {
+const RegisterForm = ({ authentication, setAuthentication }) => {
   /** EMAIL INPUT STATE */
   const [emailInput, setEmailInput] = useState({
     inputType: "email",
@@ -42,7 +42,6 @@ const RegisterForm = () => {
   });
 
   /** SUCCESS LOGIN STATE */
-  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   /** SETUP INPUTS */
@@ -60,14 +59,13 @@ const RegisterForm = () => {
 
     /** SUBMIT FORM AFTER CLIENT-SIDE VALIDATION */
     if (checkSubmitValidity) {
-      submitData("register", inputs[0], inputs[2], setSubmitSuccess);
-      setLoading(false);
+      submitData("register", inputs[0], inputs[2], setLoading, setAuthentication);
     } else {
       setLoading(false);
     }
   };
 
-  let submitButtonText = "Login";
+  let submitButtonText = "Continue";
 
   if (loading) {
     submitButtonText = <Spinner />;
@@ -75,7 +73,7 @@ const RegisterForm = () => {
 
   // Change it with actual redirect to user's page
   let renderRedirect = null;
-  if (submitSuccess) {
+  if (authentication.idToken) {
     renderRedirect = <Redirect to="/" />;
   };
 
@@ -108,7 +106,7 @@ const RegisterForm = () => {
           inputType={passwordInput.inputType}
           label={passwordInput.label} />
         <AuthSubmitContainer>
-          <Button>Continue</Button>
+          <Button>{submitButtonText}</Button>
         </AuthSubmitContainer>
         <AuthSubmitContainer>
           <Link to="/login">

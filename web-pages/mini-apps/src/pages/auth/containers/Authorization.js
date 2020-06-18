@@ -27,7 +27,7 @@ export const checkValidation = inputs => {
   return validity;
 };
 
-export const submitData = (type, email, password, onSuccess) => {
+export const submitData = (type, email, password, onload, auth) => {
   const API_KEY = "AIzaSyBP35fN5kxqq_hYobER3JZKhajME9ePZIc";
   const config = {
     method: 'POST',
@@ -42,7 +42,7 @@ export const submitData = (type, email, password, onSuccess) => {
   };
 
   let url;
-  
+
   if (type === "login") {
     url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
   }
@@ -58,14 +58,22 @@ export const submitData = (type, email, password, onSuccess) => {
     .then(res => {
       email.setState({ ...email.state, text: "" });
       password.setState({ ...password.state, text: "" });
+      onload(false);
 
       if (res.error) throw res.error;
-      if (res.idToken) onSuccess(true);
+      if (res.idToken) {
+        auth({
+          expiresIn: res.expiresIn,
+          idToken: res.idToken,
+          localId: res.localId
+        });
+      }
     })
     .catch(err => {
       const errorMessage = err.message.toLowerCase().split('_').join(' ');
 
       updateValidationState(errorMessage, email.setState);
       updateValidationState(errorMessage, password.setState);
+      onload(false);
     });
 };

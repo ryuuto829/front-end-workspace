@@ -10,7 +10,7 @@ import Button from '../components/Button';
 import Spinner from '../components/Spinner';
 import { addInputs, checkValidation, submitData } from './Authorization';
 
-const AuthForm = () => {
+const AuthForm = ({ authentication, setAuthentication }) => {
   /** EMAIL INPUT STATE */
   const [emailInput, setEmailInput] = useState({
     inputType: "email",
@@ -32,7 +32,6 @@ const AuthForm = () => {
   });
 
   /** SUCCESS LOGIN STATE */
-  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   /** SETUP INPUTS */
@@ -49,8 +48,7 @@ const AuthForm = () => {
 
     /** SUBMIT FORM AFTER CLIENT-SIDE VALIDATION */
     if (checkSubmitValidity) {
-      submitData("login", inputs[0], inputs[1], setSubmitSuccess);
-      setLoading(false);
+      submitData("login", inputs[0], inputs[1], setLoading, setAuthentication);
     } else {
       setLoading(false);
     }
@@ -64,7 +62,7 @@ const AuthForm = () => {
 
   // Change it with actual redirect to user's page
   let renderRedirect = null;
-  if (submitSuccess) {
+  if (authentication.idToken) {
     renderRedirect = <Redirect to="/" />;
   };
 
