@@ -18,8 +18,8 @@ const StyledButton = styled.button`
   }
 `;
 
-const textButton = ({ children }) => (
-  <StyledButton>
+const textButton = ({ children, ...props }) => (
+  <StyledButton {...props}>
     {children}
   </StyledButton>
 );

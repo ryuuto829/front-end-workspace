@@ -1,33 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import AuthBodyContainer from './layout/AuthBodyContainer';
 import AuthContainer from './layout/AuthContainer';
 import LoginForm from './containers/LoginForm';
 import RegisterForm from './containers/RegisterForm';
-
-// Test home page (delete later)
-const UserHome = () => (
-  <h1>Hello, thanks for authentication!</h1>
-);
-
-const GuestHome = () => (
-  <h1>Just go auth!</h1>
-);
-
+import HomePage from './containers/HomePage';
 
 const Auth = () => {
-  const [authentication, setAuthentication] = useState({
+  const [authentication, setAuthentication] = useState(JSON.parse(localStorage.getItem("authData")) || {
     expiresIn: null,
     idToken: null,
     localId: null
   });
 
-  let homePage = <GuestHome />;
-
-  if (authentication.idToken) {
-    homePage = <UserHome />;
-  }
+  useEffect(() => {
+    localStorage.setItem('authData', JSON.stringify(authentication));
+  }, [authentication]);
 
   return (
     <AuthBodyContainer>
@@ -43,11 +32,16 @@ const Auth = () => {
             render={props => <RegisterForm {...props}
               authentication={authentication}
               setAuthentication={setAuthentication} />} />
-          <Route path="/" exact render={() => homePage} />
+          <Route
+            path="/"
+            exact
+            render={props => <HomePage {...props}
+              auth={authentication.idToken}
+              setAuthentication={setAuthentication} />} />
         </Switch>
       </AuthContainer>
     </AuthBodyContainer>
   );
-}
+};
 
 export default Auth;
