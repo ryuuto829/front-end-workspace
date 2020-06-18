@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledSubmitWrapper = styled.p`
+const StyledSubmitWrapper = styled.div`
   margin: 20px 0 0 0;
 `;
 

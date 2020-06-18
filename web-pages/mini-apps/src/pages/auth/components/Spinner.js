@@ -6,12 +6,12 @@ const StyledSpinner = styled.div`
     display: inline-block;
     position: relative;
     width: 80px;
-    height: 100%;
+    height: 42px;
   }
 
   & div {
     position: absolute;
-    top: 14px;
+    top: 15px;
     width: 10px;
     height: 10px;
     border-radius: 50%;

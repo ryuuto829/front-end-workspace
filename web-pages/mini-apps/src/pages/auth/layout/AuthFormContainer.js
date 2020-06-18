@@ -5,8 +5,8 @@ const StyledForm = styled.form`
   margin: 20px 0 8px 0;
   width: 100%;
 
-  & div:last-of-type {
-    margin-bottom: 4px;
+  & button:last-of-type {
+    margin-top: 4px;
   }
 `;
 

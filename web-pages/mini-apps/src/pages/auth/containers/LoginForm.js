@@ -31,30 +31,47 @@ const AuthForm = () => {
     failedValidationMessage: null
   });
 
+  const inputs = [
+    {
+      state: emailInput,
+      setState: setEmailInput
+    },
+    {
+      state: passwordInput,
+      setState: setPasswordInput
+    }
+  ];
+
   /** SUCCESS LOGIN STATE */
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  /** FUNCTIONS */
+  const updateValidationState = (input, setInput) => {
+    setInput(prevState => ({
+      ...prevState,
+      isValid: input === null,
+      failedValidationMessage: input
+    }));
+  };
+
+  /** HANDLERS */
   const submitFormHandler = e => {
     e.preventDefault();
-    const emailValidation = checkInput(emailInput.text, emailInput.inputType);
-    const passwordValidation = checkInput(passwordInput.text, passwordInput.inputType);
+    setLoading(true);
 
-    setEmailInput(prevState => ({
-      ...prevState,
-      isValid: emailValidation === null,
-      failedValidationMessage: emailValidation
-    }));
+    let checkSubmitValidity = true;
 
-    setPasswordInput(prevState => ({
-      ...prevState,
-      isValid: passwordValidation === null,
-      failedValidationMessage: passwordValidation
-    }));
+    for (let input of inputs) {
+      const validation = checkInput(input.state.text, input.state.inputType);
+      updateValidationState(validation, input.setState);
+      if (validation !== null) checkSubmitValidity = false;
+    }
 
     /** SUBMIT FORM AFTER CLIENT-SIDE VALIDATION */
-    if (emailValidation === null && passwordValidation === null) {
+    if (checkSubmitValidity) {
       const API_KEY = "AIzaSyBP35fN5kxqq_hYobER3JZKhajME9ePZIc";
-      const config = {
+      const loginConfig = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -66,32 +83,46 @@ const AuthForm = () => {
         })
       };
 
-      fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, config)
+      fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, loginConfig)
         .then(res => {
+          setLoading(true);
           return res.json();
         })
         .then(res => {
-          if (res.idToken) {
-            setSubmitSuccess(true);
-          }
-          console.log(res);
+          setEmailInput({ ...emailInput, text: "" });
+          setPasswordInput({ ...passwordInput, text: "" });
+          setLoading(false);
+
+          if (res.error) throw res.error;
+          if (res.idToken) setSubmitSuccess(true);
         })
         .catch(err => {
-          console.log(err);
-        });
-    }
+          const errorMessage = err.message.toLowerCase().split('_').join(' ');
 
+          updateValidationState(errorMessage, setEmailInput);
+          updateValidationState(errorMessage, setPasswordInput);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
   };
 
+  let submitButtonText = "Login";
+
+  if (loading) {
+    submitButtonText = <Spinner />;
+  }
+
   // Change it with actual redirect to user's page
-  let redirecting = null;
+  let renderRedirect = null;
   if (submitSuccess) {
-    redirecting = <Redirect to="/" />;
+    renderRedirect = <Redirect to="/" />;
   };
 
   return (
     <Fragment>
-      {redirecting}
+      {renderRedirect}
       <AuthHeader
         caption="Welcome Back!"
         description="We're so excited to see you again!" />
@@ -111,20 +142,20 @@ const AuthForm = () => {
           inputChanged={e => setPasswordInput({ ...passwordInput, text: e.target.value })}
           inputType="password"
           label="password" />
-        <TextButton>Forgot your password?</TextButton>
         <AuthSubmitContainer>
-          <Button>Login<Spinner /></Button>
-        </AuthSubmitContainer>
-        <AuthSubmitContainer>
-          <span
-            style={{ fontSize: "14px", color: "#72767d", marginRight: "5px" }}>
-            Need an account?
-            </span>
-          <Link to="/register">
-            <TextButton>Register</TextButton>
-          </Link>
+          <Button>{submitButtonText}</Button>
         </AuthSubmitContainer>
       </AuthFormContainer>
+      <AuthSubmitContainer>
+        <TextButton>Forgot your password?</TextButton>
+        <span
+          style={{ fontSize: "14px", color: "#72767d", margin: "0 5px" }}>
+          | Need an account?
+            </span>
+        <Link to="/register">
+          <TextButton>Register</TextButton>
+        </Link>
+      </AuthSubmitContainer>
     </Fragment>
   );
 };
